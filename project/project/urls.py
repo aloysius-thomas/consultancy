@@ -20,10 +20,16 @@ from django.urls import include
 from django.urls import path
 
 from accounts.views import home
+from project.views import about_us_view
+from project.views import contact_us_view
+from project.views import human_resource_page_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name='home'),
+    path('about', about_us_view, name='about'),
+    path('contact', contact_us_view, name='contact'),
+    path('human-resource', human_resource_page_view, name='human-resource'),
     path('auth/', include('accounts.urls')),
 ]
 

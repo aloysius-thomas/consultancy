@@ -30,7 +30,7 @@ def register(request):
     return render(request, 'accounts/signup.html', {'form': form})
 
 
-class LoginView(LoginView):
+class LoginCustomView(LoginView):
     template_name = 'accounts/login.html'
     redirect_authenticated_user = True
 
