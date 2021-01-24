@@ -11,7 +11,6 @@ from django.urls import reverse
 from accounts.forms import CustomUserCreationForm
 
 
-@login_required
 def home(request):
     return render(request, 'home.html', {})
 
