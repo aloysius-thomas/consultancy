@@ -41,26 +41,6 @@
 <!-- Preloader Start -->
 {% include 'menu.html' %}
 <main>
-    <!-- Hero Area Start-->
-    <div class="slider-area hero-overly">
-        <div class="single-slider hero-overly  slider-height d-flex align-items-center">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-xl-8 col-lg-9">
-                        <!-- Hero Caption -->
-                        <div class="hero__caption">
-                            <span>Explore the city</span>
-                            <h1>Discover Great Places</h1>
-                        </div>
-                        <!--Hero form -->
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-    <!--Hero Area End-->
-
     {% block contents %}
 
     {% endblock %}
@@ -76,7 +56,8 @@
                             <div class="single-footer-caption mb-30">
                                 <!-- logo -->
                                 <div class="footer-logo">
-                                    <a href="#"><img src="{% static 'assets/img/logo/logo2_footer.png' %}" alt=""></a>
+                                    <a href="#"><img src="{% static 'assets/img/logo/logo2_footer.png' %}" alt=""
+                                                     style="  box-shadow: 0 4px 8px 0 rgba(225, 225, 225, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"></a>
                                 </div>
                             </div>
                         </div>

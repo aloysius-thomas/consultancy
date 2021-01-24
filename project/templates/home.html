@@ -1,3 +1,198 @@
 {% extends 'base.html' %}
+{% load static %}
+
 {% block contents %}
+    <div class="slider-area hero-overly">
+        <img class="card-img rounded-0" src="{% static 'assets/img/custom/home_bg.jpg' %}" alt="">
+    </div>
+    <div class="popular-location section-padding30">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- Section Tittle -->
+                    <div class="section-tittle text-center mb-80">
+                        <span>Most Offered</span>
+                        <h2>Services</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="single-location mb-30">
+                        <div class="location-img">
+                            <img src="{% static 'assets/img/custom/event_management.jpg' %}" alt="" width="500"
+                                 height="300"
+                                 style="object-fit: cover">
+                        </div>
+                        <div class="location-details">
+                            <p>Event Management</p>
+                            <a href="#" class="location-btn">View More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="single-location mb-30">
+                        <div class="location-img">
+                            <img src="{% static 'assets/img/custom/construction.jpg' %}" alt=""
+                                 width="500" height="300" style="object-fit: cover">
+                        </div>
+                        <div class="location-details">
+                            <p>Construction & Interior Designing</p>
+                            <a href="#" class="location-btn"></i>View More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="single-location mb-30">
+                        <div class="location-img">
+                            <img src="{% static 'assets/img/custom/tour-and-travel.jpg' %}" alt=""
+                                 width="500" height="300" style="object-fit: cover">
+                        </div>
+                        <div class="location-details">
+                            <p>Tour & Travels</p>
+                            <a href="#" class="location-btn">View More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="single-location mb-30">
+                        <div class="location-img">
+                            <div class="location-img">
+                                <img src="{% static 'assets/img/custom/marketing.jpg' %}" alt=""
+                                     width="500" height="300" style="object-fit: cover">
+                            </div>
+                        </div>
+                        <div class="location-details">
+                            <p>Marketing</p>
+                            <a href="#" class="location-btn">View More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="single-location mb-30">
+                        <div class="location-img">
+                            <img src="{% static 'assets/img/custom/hr.jpg' %}" alt=""
+                                 width="500" height="300" style="object-fit: cover">
+                        </div>
+                        <div class="location-details">
+                            <p>Human Resource</p>
+                            <a href="#" class="location-btn">View More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="services-area pt-150 pb-150 section-bg"
+         data-background="../static/assets/img/gallery/section_bg02.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- Section Tittle -->
+                    <div class="section-tittle section-tittle2 text-center mb-80">
+                        <span>Easy to explore</span>
+                        <h2>How It Works</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-between">
+                <div class="col-lg-3 col-md-6">
+                    <div class="single-services text-center mb-50">
+                        <div class="services-icon">
+                            <span class="flaticon-list"></span>
+                        </div>
+                        <div class="services-cap">
+                            <h5><a href="#">1. Choose a Category</a></h5>
+                        </div>
+                        <!-- Shpape -->
+                        <img class="shape1 d-none d-lg-block" src="{% static 'static/assets/img/icon/serices1.png' %}"
+                             alt="">
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="single-services text-center mb-50">
+                        <div class="services-icon">
+                            <span class="flaticon-problem"></span>
+                        </div>
+                        <div class="services-cap">
+                            <h5><a href="#">2. what you want</a></h5>
+                        </div>
+                        <img class="shape2 d-none d-lg-block" src="{% static 'static/assets/img/icon/serices2.png' %}"
+                             alt="">
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="single-services text-center mb-50">
+                        <div class="services-icon">
+                            <span class="flaticon-respect"></span>
+                        </div>
+                        <div class="services-cap">
+                            <h5><a href="#">3. Go out & Explore</a></h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Categories Area Start -->
+    <div class="categories-area section-padding30">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- Section Tittle -->
+                    <div class="section-tittle text-center mb-80">
+                        <span>We are offering for you</span>
+                        <h2>Featured Categories</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="single-cat text-center mb-50">
+                        <div class="cat-icon">
+                        </div>
+                        <div class="cat-cap">
+                            <h5><a href="#">Product Launch</a></h5>
+                            <p>Must explain your service how is this pleasure</p>
+                            <a href="#">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="single-cat text-center mb-50">
+                        <div class="cat-icon">
+                        </div>
+                        <div class="cat-cap">
+                            <h5><a href="#">Live Shows</a></h5>
+                            <p>Must explain your service how is this pleasure</p>
+                            <a href="#">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="single-cat text-center mb-50">
+                        <div class="cat-icon">
+                        </div>
+                        <div class="cat-cap">
+                            <h5><a href="#">Wedding</a></h5>
+                            <p>Must explain your service how is this pleasure</p>
+                            <a href="#">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="single-cat text-center mb-50">
+                        <div class="cat-icon">
+                        </div>
+                        <div class="cat-cap">
+                            <h5><a href="#">Birthday Party</a></h5>
+                            <p>Must explain your service how is this pleasure</p>
+                            <a href="#">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 {% endblock %}
