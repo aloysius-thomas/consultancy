@@ -1,5 +1,6 @@
 from django import forms
 
+from services.models import Construction
 from services.models import Event
 
 
@@ -78,4 +79,17 @@ class BirthdayBookingForm(forms.ModelForm):
             'amount',
             'food_items',
             'light_and_sound',
+        }
+
+
+class ConstructionForm(forms.ModelForm):
+    work_progress = forms.CharField(widget=forms.Textarea)
+
+    class Meta:
+        model = Construction
+        fields = {
+            'number_of_day',
+            'square_feet',
+            'work_progress',
+            'construction_plan',
         }

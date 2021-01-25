@@ -5,6 +5,7 @@ from django.shortcuts import render
 
 from services.forms import BirthdayBookingForm
 from services.forms import BusinessMeetingBookingForm
+from services.forms import ConstructionForm
 from services.forms import LiveShowBookingForm
 from services.forms import ProductLaunchBookingForm
 from services.forms import WeddingBookingForm
@@ -116,3 +117,19 @@ def book_birthday_view(request):
     else:
         form = BirthdayBookingForm()
     return render(request, 'services/forms/birthday_form.html', {'form': form, 'title': title})
+
+
+@login_required
+def construction_service_view(request, service):
+    title = f'{service.title()} Booking'
+    if request.method == 'POST':
+        form = ConstructionForm(request.POST)
+        if form.is_valid():
+            event = form.save(commit=False)
+            event.booked_by = request.user
+            event.event_type = service
+            messages.success(request, 'Successfully Saved!')
+            return redirect('home')
+    else:
+        form = ConstructionForm()
+    return render(request, 'services/forms/construction_form.html', {'form': form, 'title': title})
