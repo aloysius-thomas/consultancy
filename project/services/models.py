@@ -17,7 +17,7 @@ class Company(models.Model):
     pin_code = models.IntegerField()
     phone_number = models.CharField(max_length=10)
     email = models.EmailField()
-    type = models.CharField(max_length=128)
+    company_type = models.CharField(max_length=128)
 
     def __str__(self):
         return self.name

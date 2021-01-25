@@ -7,6 +7,7 @@ from services.forms import BirthdayBookingForm
 from services.forms import BusinessMeetingBookingForm
 from services.forms import CandidateForm
 from services.forms import CollegeTourForm
+from services.forms import CompanyForm
 from services.forms import ConstructionForm
 from services.forms import FamilyTourForm
 from services.forms import HoneymoonForm
@@ -237,3 +238,16 @@ def vacancy_submit_view(request):
     else:
         form = VacancyForm()
     return render(request, 'services/forms/vacancy_submit_form.html', {'form': form, 'title': title})
+
+
+@login_required
+def company_create_view(request):
+    title = 'Submit Company  '
+    if request.method == 'POST':
+        form = CompanyForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    else:
+        form = CompanyForm()
+    return render(request, 'services/forms/company_form.html', {'form': form, 'title': title})

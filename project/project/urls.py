@@ -24,12 +24,13 @@ from services.views import about_us_view
 from services.views import contact_us_view
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('database/', admin.site.urls),
     path('', home, name='home'),
     path('about', about_us_view, name='about'),
     path('contact', contact_us_view, name='contact'),
     path('auth/', include('accounts.urls')),
     path('services/', include('services.urls')),
+    path('admin/', include('services.urls_admin')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

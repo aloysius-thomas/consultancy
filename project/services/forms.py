@@ -1,6 +1,7 @@
 from django import forms
 
 from services.models import Candidate
+from services.models import Company
 from services.models import Construction
 from services.models import Event
 from services.models import Tour
@@ -194,3 +195,9 @@ class VacancyForm(forms.ModelForm):
             'venue',
             'time',
         }
+
+
+class CompanyForm(forms.ModelForm):
+    class Meta:
+        model = Company
+        fields = '__all__'
