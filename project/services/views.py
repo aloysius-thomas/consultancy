@@ -3,8 +3,11 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect
 from django.shortcuts import render
 
+from services.forms import BirthdayBookingForm
 from services.forms import BusinessMeetingBookingForm
+from services.forms import LiveShowBookingForm
 from services.forms import ProductLaunchBookingForm
+from services.forms import WeddingBookingForm
 
 
 def about_us_view(request):
@@ -65,3 +68,51 @@ def book_business_meeting_view(request):
     else:
         form = BusinessMeetingBookingForm()
     return render(request, 'services/forms/business_meeting_form.html', {'form': form, 'title': title})
+
+
+@login_required
+def book_live_show_view(request):
+    title = 'Live Show Booking'
+    if request.method == 'POST':
+        form = LiveShowBookingForm(request.POST)
+        if form.is_valid():
+            event = form.save(commit=False)
+            event.booked_by = request.user
+            event.event_type = 'live_show'
+            messages.success(request, 'Successfully Saved!')
+            return redirect('home')
+    else:
+        form = LiveShowBookingForm()
+    return render(request, 'services/forms/live_show_form.html', {'form': form, 'title': title})
+
+
+@login_required
+def book_wedding_view(request):
+    title = 'Wedding Booking'
+    if request.method == 'POST':
+        form = WeddingBookingForm(request.POST)
+        if form.is_valid():
+            event = form.save(commit=False)
+            event.booked_by = request.user
+            event.event_type = 'wedding'
+            messages.success(request, 'Successfully Saved!')
+            return redirect('home')
+    else:
+        form = WeddingBookingForm()
+    return render(request, 'services/forms/wedding_form.html', {'form': form, 'title': title})
+
+
+@login_required
+def book_birthday_view(request):
+    title = 'Birthday Booking'
+    if request.method == 'POST':
+        form = BirthdayBookingForm(request.POST)
+        if form.is_valid():
+            event = form.save(commit=False)
+            event.booked_by = request.user
+            event.event_type = 'birthday'
+            messages.success(request, 'Successfully Saved!')
+            return redirect('home')
+    else:
+        form = BirthdayBookingForm()
+    return render(request, 'services/forms/birthday_form.html', {'form': form, 'title': title})

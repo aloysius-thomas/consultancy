@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block contents %}
+    <div class="hero-area2  slider-height2 hero-overly2 d-flex align-items-center" style="min-height: 250px">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="hero-cap text-center pt-20">
+                        <h2>{{ title }}</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="card p-lg-5 m-lg-5">
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-row">
+                    <div class="form-group col-md-12 mb-0">
+                        {{ form.date_of_event|as_crispy_field }}
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-3 mb-0">
+                        {{ form.type_of_venue|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-3 mb-0">
+                        {{ form.food_items|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-3 mb-0">
+                        {{ form.number_of_person|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-3 mb-0">
+                        {{ form.amount|as_crispy_field }}
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-12 mb-0">
+                        {{ form.light_and_sound|as_crispy_field }}
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+    {% block extra-js %}
+        <script>
+            $(function () {
+                $("#id_date_of_event").datepicker({
+                    format: 'dd/mm/yyyy',
+                });
+            });
+        </script>
+    {% endblock %}
+{% endblock %}
