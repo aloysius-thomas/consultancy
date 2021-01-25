@@ -7,6 +7,8 @@ from .views import book_product_launch_view
 from .views import book_wedding_view
 from .views import candidate_register_view
 from .views import college_tour_view
+from .views import company_view
+from .views import company_details_view
 from .views import construction_page_view
 from .views import construction_service_view
 from .views import event_management_page_view
@@ -39,5 +41,7 @@ urlpatterns = [
 
     path('consultancy/register-candidate/', candidate_register_view, name='register-candidate'),
     path('consultancy/submit-vacancy/', vacancy_submit_view, name='submit-vacancy'),
+    path('company/', company_view, name='company-page'),
+    path('company/<int:company_id>/details', company_details_view, name='company-detail-page'),
 
 ]

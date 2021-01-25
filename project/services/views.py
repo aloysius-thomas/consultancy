@@ -1,5 +1,6 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import get_object_or_404
 from django.shortcuts import redirect
 from django.shortcuts import render
 
@@ -50,6 +51,16 @@ def tour_page_view(request):
 
 def marketing_view(request):
     return render(request, 'services/marketing.html', {})
+
+
+def company_view(request):
+    companies = Company.objects.all()
+    return render(request, 'services/company.html', {'companies': companies})
+
+
+def company_details_view(request, company_id):
+    company = get_object_or_404(Company, id=company_id)
+    return render(request, 'services/company_details.html', {'company': company})
 
 
 @login_required

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}
+    {{ company.name }} Details
+{% endblock %}
+{% block contents %}
+    <div class="hero-area2  slider-height2 hero-overly2 d-flex align-items-center" style="min-height: 250px">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="hero-cap text-center pt-20">
+                        <h2>{{ company.name.title }}</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="col-12">
+            <p><b>About:</b> {{ company.bio }} </p>
+            <p><b>Place:</b> {{ company.place }} - {{ company.pin_code }}</p>
+            <p><b>Phone:</b>{{ company.phone_number }}</p>
+            <p><b>Email:</b>{{ company.email }}</p>
+            <p class="col-md-8">
+            </p>
+        </div>
+    </div>
+{% endblock %}

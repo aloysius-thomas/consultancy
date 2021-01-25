@@ -18,6 +18,7 @@ class Company(models.Model):
     phone_number = models.CharField(max_length=10)
     email = models.EmailField()
     company_type = models.CharField(max_length=128)
+    bio = models.TextField()
 
     def __str__(self):
         return self.name
