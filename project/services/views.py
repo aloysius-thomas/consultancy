@@ -35,7 +35,23 @@ def admin_required(login_url='admin-login-view'):
 
 
 def admin_banned(login_url='login'):
-    return user_passes_test(lambda u: u.is_superuser == False, login_url=login_url)
+    return user_passes_test(lambda u: not u.is_superuser, login_url=login_url)
+
+
+def hr_admin_required(login_url='admin-login-view'):
+    return user_passes_test(lambda u: u.admin_type == 'hr_admin', login_url=login_url)
+
+
+def event_admin_required(login_url='admin-login-view'):
+    return user_passes_test(lambda u: u.admin_type == 'event_admin', login_url=login_url)
+
+
+def construction_admin_required(login_url='admin-login-view'):
+    return user_passes_test(lambda u: u.admin_type == 'construction_admin', login_url=login_url)
+
+
+def tour_admin_admin_required(login_url='admin-login-view'):
+    return user_passes_test(lambda u: u.admin_type == 'tour_admin', login_url=login_url)
 
 
 def about_us_view(request):
