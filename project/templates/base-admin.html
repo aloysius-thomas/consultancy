@@ -44,7 +44,8 @@
                                 <h5 class="mb-0 text-white nav-user-name">
                                     Hi! {{ user }}</h5>
                             </div>
-                            <a class="dropdown-item" href="{% url 'admin-logout-view' %}"><i class="fas fa-power-off mr-2"></i>Logout</a>
+                            <a class="dropdown-item" href="{% url 'admin-logout-view' %}"><i
+                                    class="fas fa-power-off mr-2"></i>Logout</a>
                         </div>
                     </li>
                 </ul>
@@ -73,8 +74,12 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'admin-home' %}">Admin Home</a>
                         </li>
-                        {#                        {% if user.is_superuser %}#}
-                        {% if 1 == 1 %}
+                        {% if user.is_superuser %}
+                            {% if not user.admin_type %}
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'admin-register-view' %}">Admin Register</a>
+                                </li>
+                            {% endif %}
                             {% if user.admin_type == 'hr_admin' %}
                                 <li class="nav-divider">
                                     Human Resource
@@ -221,6 +226,12 @@
     <!-- ============================================================== -->
     <div class="dashboard-wrapper">
         <div class="container-fluid dashboard-content">
+            {% if messages %}
+                {% for message in messages %}
+                    {% if message.tags %}
+                        <script>alert("{{ message }}")</script> {% endif %}
+                {% endfor %}
+            {% endif %}
             <div class="row">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                     {% block content %}
@@ -229,7 +240,7 @@
                 </div>
             </div>
         </div>
-        </div>
+    </div>
 </div>
 <!-- ============================================================== -->
 <!-- end main wrapper -->

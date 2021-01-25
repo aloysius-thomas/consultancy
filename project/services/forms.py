@@ -1,6 +1,9 @@
 from django import forms
 from django.contrib.auth import authenticate
+from django.contrib.auth.forms import UsernameField
 
+from accounts.models import ADMIN_TYPE
+from accounts.models import User
 from services.models import Candidate
 from services.models import Company
 from services.models import Construction
@@ -221,3 +224,18 @@ class AdminLoginForm(forms.Form):
                 raise forms.ValidationError("This user is not longer active")
 
         return super(AdminLoginForm, self).clean()
+
+
+class AdminCreateForm(forms.Form):
+    username = UsernameField()
+    first_name = forms.CharField(max_length=255)
+    last_name = forms.CharField(max_length=255)
+    password = forms.CharField(widget=forms.PasswordInput)
+    admin_type = forms.ChoiceField(choices=ADMIN_TYPE)
+
+    def clean(self, *args, **kwargs):
+        username = self.cleaned_data["username"]
+
+        if User.objects.filter(username=username).exists():
+            raise forms.ValidationError("username already exist")
+        return super(AdminCreateForm, self).clean()

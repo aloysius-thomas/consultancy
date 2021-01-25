@@ -8,6 +8,8 @@ from django.shortcuts import get_object_or_404
 from django.shortcuts import redirect
 from django.shortcuts import render
 
+from accounts.models import User
+from services.forms import AdminCreateForm
 from services.forms import AdminLoginForm
 from services.forms import BirthdayBookingForm
 from services.forms import BusinessMeetingBookingForm
@@ -425,6 +427,7 @@ def accept_event(request, event_id):
     else:
         event.status = 'approved'
         event.save()
+        messages.success(request, f'{event.get_event_type_display()} Approved')
         return redirect(get_event_redirect_url(event))
 
 
@@ -437,6 +440,7 @@ def reject_event(request, event_id):
     else:
         event.status = 'rejected'
         event.save()
+        messages.error(request, f'{event.get_event_type_display()} Rejected')
         return redirect(get_event_redirect_url(event))
 
 
@@ -538,6 +542,16 @@ def college_tour_list(request):
     return render(request, 'admin/tour/college_tour_list.html', {'data': data, 'title': title})
 
 
+@admin_required()
+def honeymoon_list(request):
+    data = Tour.objects.filter(tour_type='honeymoon')
+    status = request.GET.get('status', None)
+    if status:
+        data = data.filter(status=status)
+    title = 'Honeymoon List '
+    return render(request, 'admin/tour/honeymoon_list.html', {'data': data, 'title': title})
+
+
 def get_tour_redirect_url(tour):
     if tour.tour_type == 'solo':
         url = redirect('tour-solo-list')
@@ -578,16 +592,6 @@ def reject_tour(request, tour_id):
         return get_tour_redirect_url(tour)
 
 
-@admin_required()
-def honeymoon_list(request):
-    data = Tour.objects.filter(tour_type='honeymoon')
-    status = request.GET.get('status', None)
-    if status:
-        data = data.filter(status=status)
-    title = 'Honeymoon List '
-    return render(request, 'admin/tour/honeymoon_list.html', {'data': data, 'title': title})
-
-
 def admin_login_view(request):
     if request.method == 'POST':
         form = AdminLoginForm(request.POST)
@@ -606,3 +610,27 @@ def admin_login_view(request):
 def admin_logout_view(request):
     logout(request)
     return redirect('admin-login-view')
+
+
+@admin_required()
+def create_admin_view(request):
+    title = 'Register Admin'
+    admins = User.objects.filter(is_superuser=True, admin_type__isnull=False)
+    print(admins)
+    if request.method == 'POST':
+        form = AdminCreateForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            first_name = form.cleaned_data.get('first_name')
+            last_name = form.cleaned_data.get('last_name')
+            admin_type = form.cleaned_data.get('admin_type')
+            password = form.cleaned_data.get('password')
+            user = User(username=username, first_name=first_name, last_name=last_name, admin_type=admin_type,
+                        is_superuser=True)
+            user.set_password(password)
+            user.save()
+            messages.success(request, 'Successfully Created!')
+            return redirect('admin-register-view')
+    else:
+        form = AdminCreateForm()
+    return render(request, 'admin/register-admin.html', {'form': form, 'title': title, 'admins': admins})

@@ -13,6 +13,7 @@ from .views import college_tour_list
 from .views import company_create_view
 from .views import company_list_view
 from .views import construction_list
+from .views import create_admin_view
 from .views import family_tour_list
 from .views import honeymoon_list
 from .views import interior_2d_list
@@ -28,6 +29,7 @@ from .views import wedding_list
 
 urlpatterns = [
     path('', admin_home_view, name='admin-home'),
+    path('register-admin/', create_admin_view, name='admin-register-view'),
     path('login/', admin_login_view, name='admin-login-view'),
     path('logout/', admin_logout_view, name='admin-logout-view'),
     path('human-resource/company/add/', company_create_view, name='human-resource-company-add-view'),
