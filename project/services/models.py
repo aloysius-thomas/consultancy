@@ -4,6 +4,12 @@ from django.db import models
 
 from accounts.models import User
 
+STATUS = (
+    ('approved', 'Approved'),
+    ('rejected', 'Rejected'),
+    ('pending', 'Pending'),
+)
+
 
 class Company(models.Model):
     name = models.CharField(max_length=255)
@@ -83,6 +89,7 @@ class Event(models.Model):
     transportation = models.IntegerField(blank=True, null=True)
     photography = models.IntegerField(blank=True, null=True)
     beautician = models.IntegerField(blank=True, null=True)
+    status = models.CharField(choices=STATUS, default='pending')
 
     def __str__(self):
         return f'{self.get_event_type_display()}  booked by {str(self.booked_by)}'
@@ -100,6 +107,7 @@ class Construction(models.Model):
     square_feet = models.CharField(max_length=128)
     work_progress = models.CharField(max_length=64)
     construction_plan = models.ImageField(upload_to='construction-plan')
+    status = models.CharField(choices=STATUS, default='pending')
 
     def __str__(self):
         return f'{self.get_service_type_display()} booked by {str(self.booked_by)}'
@@ -136,7 +144,7 @@ class Tour(models.Model):
     number_of_girls = models.IntegerField(blank=True, null=True)
     number_of_staff = models.IntegerField(blank=True, null=True)
     need_tour_guid = models.CharField(choices=YES_OR_NO, max_length=1)
+    status = models.CharField(choices=STATUS, default='pending')
 
     def __str__(self):
         return f'{self.get_tour_type_display()} booked by {str(self.booked_by)}'
-
