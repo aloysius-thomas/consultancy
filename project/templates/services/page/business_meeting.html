@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block contents %}
+
+    <!-- Hero Start-->
+    <div class="hero-area2  slider-height2 hero-overly2 d-flex align-items-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="hero-cap text-center pt-50">
+                        <h2>Event Management</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="align-items-center m-5">
+            <div class="row">
+                <div class="col-12" style="text-align: justify; text-justify: inter-word;">
+                    <h3 class="pb-1">Business Meeting and Conference</h3>
+                    <p class="pt-1">Business is the activity of making one's living or making money by producing or
+                        buying and selling products (such as goods and services). Simply put, it is "any activity or
+                        enterprise entered into for profit."Business generally refers to organizations that seek profits
+                        by providing goods or services in exchange for payment. However, businesses don't need to turn a
+                        profit to be considered a business. The pursuit of profit, in and of itself, makes an
+                        organization a business. Here's a full definition of what makes a business, along with some of
+                        the common types you'll encounter.There are many types of business models, and businesses
+                        commonly operate in more than one area simultaneously. However, for the sake of generalizing the
+                        categories of business, the three main types are: Service, such as restaurants Manufacturing,
+                        such as industrial plants Retail, such as clothing stores Beyond the type of product or service
+                        provided, businesses can also be classified by their size and legal structure. In North America,
+                        the North American Industry Classification System (NAICS) sets the standards for which
+                        businesses qualify as a small-to-medium-enterprise (SME). Size standards vary by industry. They
+                        may be determined by the size of the workforce or by the amount of revenue coming into an
+                        enterprise.4﻿ In the U.S., the IRS helps define the potential structures someone can choose
+                        while defining their business venture. Here are the most common business structures. Sole
+                        proprietorship: These are unincorporated businesses owned and operated by a single person.5
+                        Partnerships: This occurs when two or more people share in the funding, labor, ownership,
+                        profits, and losses that come with a business venture. Corporations: These businesses are owned
+                        by shareholders and can become massive enterprises.7 S corporations: These businesses are
+                        similar to corporations, but they're taxed differently—passing income, losses, deductions, and
+                        any other credits through to shareholders to be taxed at individual rates. We arrange meetings
+                        and conference for various occasions. Our event producers have the creative flair to make
+                        whatever you imagine come to life. From concept development to set, and properties , by ongoing
+                        consultation and extensive planning, we provide innovative solutions to meet specific goals by
+                        your guideline.
+                    </p>
+                    <p>
+                    <ul class="ul.cp-about-listed">
+                        <li><span style='font-size:25px;'>&#9989;</span>Business Meeting</li>
+                        <li><span style='font-size:25px;'>&#9989;</span>Various Conference</li>
+                        <li><span style='font-size:25px;'>&#9989;</span>Display Themes</li>
+                    </ul>
+                    </p>
+                </div>
+                <div class="m-4">
+                    <a href="{% url 'business-meeting-booking' %}">
+                        <button class="btn btn--radius-2 btn--red" type="submit"> Pick Your Order</button>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

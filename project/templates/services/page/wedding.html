@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block contents %}
+
+    <!-- Hero Start-->
+    <div class="hero-area2  slider-height2 hero-overly2 d-flex align-items-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="hero-cap text-center pt-50">
+                        <h2>Event Management</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="align-items-center m-5">
+            <div class="row">
+                <div class="col-12" style="text-align: justify; text-justify: inter-word;">
+                    <h3 class="pb-1">Wedding Planner</h3>
+                    <p class="pt-1">The beauty of marriage is not always seen from the beginning.” The most beautiful
+                        moment of your life. We want to make it more memorable for you with our exciting wedding
+                        packages for various communities including
+                    </p>
+                    <p>
+                        Stage decoration Destination weddings Catering Photography Bride grooming and other events
+                        starting from INR: 200000. We offer the combo packages starting from the above price. However
+                        separate packages are done according to the customer’s convenience and the price changes
+                        accordingly.
+                    </p>
+                </div>
+                <div class="m-4">
+                    <a href="{% url 'wedding-booking' %}">
+                        <button class="btn btn--radius-2 btn--red" type="submit"> Pick Your Order</button>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

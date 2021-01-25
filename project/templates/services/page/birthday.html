@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block contents %}
+
+    <!-- Hero Start-->
+    <div class="hero-area2  slider-height2 hero-overly2 d-flex align-items-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="hero-cap text-center pt-50">
+                        <h2>Event Management</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="align-items-center m-5">
+            <div class="row">
+                <div class="col-12" style="text-align: justify; text-justify: inter-word;">
+                    <h3 class="pb-1">Birthday Parties</h3>
+                    <p class="pt-1">Birthdays are the most beautiful moment that happens a day in every year. We are so
+                        privileged to make your birthday more memorable with our full-fledged packages starting from
+                        simple to platinum. The simple decoration consists of birthday balloons and other small
+                        decorations. The price of it starts from INR: 1999. Other packages include:
+                    </p>
+                    <p>
+                        Theme decoration with activity. INR: 7999 Theme decoration Gold. INR: 10000 Theme decoration
+                        Platinum. INR: 17999 Separate packages are there for food items depending on your taste. The
+                        above prices are highly negotiable.
+                    </p>
+                </div>
+                <div class="m-4">
+                    <a href="{% url 'birthday-booking' %}">
+                        <button class="btn btn--radius-2 btn--red" type="submit"> Pick Your Order</button>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

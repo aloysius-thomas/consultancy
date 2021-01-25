@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block contents %}
+
+    <!-- Hero Start-->
+    <div class="hero-area2  slider-height2 hero-overly2 d-flex align-items-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="hero-cap text-center pt-50">
+                        <h2>Event Management</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="align-items-center m-5">
+            <div class="row">
+                <div class="col-12" style="text-align: justify; text-justify: inter-word;">
+                    <h3 class="pb-1">Product Launch</h3>
+                    <p class="pt-1">A laptop shall be such that it is compatible to carry and run the demanded
+                        applications smoothly. The urge to launch something new on the existing features lead us to our
+                        specially designed compatible laptop. LapO Note Mini is all designed so that it is convenient
+                        for business, studies and entertainment. Specifications of LapO includes: 12.5 inch display with
+                        i5 core processor and 8GB RAM with 8+ hours of battery life and 2K HD resolution. Other than
+                        that, it provides 2 in 1 feature (detachable or bend back). Solid tactile keyboard provides good
+                        performance which helps in improving your typing. That’s all for the basic features. Keep your
+                        eyes open as LapO will reach out you soon!
+                    </p>
+
+                    <img class="card-img rounded-0" src="{% static 'assets/img/custom/lap1.png' %}"
+                         alt="">
+                    <img class="card-img rounded-0" src="{% static 'assets/img/custom/lap2.jpg' %}"
+                         alt="">
+                </div>
+                <div class="m-4">
+                    <a href="{% url 'product-launch-booking' %}">
+                        <button class="btn btn--radius-2 btn--red" type="submit"> Pick Your Order</button>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

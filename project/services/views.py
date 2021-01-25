@@ -94,6 +94,54 @@ def company_details_view(request, company_id):
     return render(request, 'services/company_details.html', {'company': company})
 
 
+def product_launch_page_view(request):
+    return render(request, 'services/page/product_launch.html', {})
+
+
+def business_meeting_page_view(request):
+    return render(request, 'services/page/business_meeting.html', {})
+
+
+def live_show_page_view(request):
+    return render(request, 'services/page/live_show.html', {})
+
+
+def wedding_page_view(request):
+    return render(request, 'services/page/wedding.html', {})
+
+
+def birthday_page_view(request):
+    return render(request, 'services/page/birthday.html', {})
+
+
+def construction_service_page_view(request):
+    return render(request, 'services/page/construction.html', {})
+
+
+def interior_2d_page_view(request):
+    return render(request, 'services/page/interior_2d.html', {})
+
+
+def interior_3d_page_view(request):
+    return render(request, 'services/page/interior_3d.html', {})
+
+
+def solo_tour_page_view(request):
+    return render(request, 'services/page/solo_tour.html', {})
+
+
+def family_tour_page_view(request):
+    return render(request, 'services/page/family_tour.html', {})
+
+
+def college_tour_page_view(request):
+    return render(request, 'services/page/college_tour.html', {})
+
+
+def honeymoon_tour_page_view(request):
+    return render(request, 'services/page/honeymoon_tour.html', {})
+
+
 @login_required
 @admin_banned()
 def book_product_launch_view(request):
@@ -112,7 +160,7 @@ def book_product_launch_view(request):
     return render(request, 'services/forms/product_launch_form.html', {'form': form, 'title': title})
 
 
-@admin_banned
+@admin_banned()
 @login_required
 def book_business_meeting_view(request):
     title = 'Business Meeting Booking'
@@ -130,7 +178,7 @@ def book_business_meeting_view(request):
     return render(request, 'services/forms/business_meeting_form.html', {'form': form, 'title': title})
 
 
-@admin_banned
+@admin_banned()
 @login_required
 def book_live_show_view(request):
     title = 'Live Show Booking'
@@ -148,7 +196,7 @@ def book_live_show_view(request):
     return render(request, 'services/forms/live_show_form.html', {'form': form, 'title': title})
 
 
-@admin_banned
+@admin_banned()
 @login_required
 def book_wedding_view(request):
     title = 'Wedding Booking'
@@ -166,7 +214,7 @@ def book_wedding_view(request):
     return render(request, 'services/forms/wedding_form.html', {'form': form, 'title': title})
 
 
-@admin_banned
+@admin_banned()
 @login_required
 def book_birthday_view(request):
     title = 'Birthday Booking'
@@ -184,7 +232,7 @@ def book_birthday_view(request):
     return render(request, 'services/forms/birthday_form.html', {'form': form, 'title': title})
 
 
-@admin_banned
+@admin_banned()
 @login_required
 def construction_service_view(request, service):
     title = f'{service.title()} Booking'
@@ -202,7 +250,7 @@ def construction_service_view(request, service):
     return render(request, 'services/forms/construction_form.html', {'form': form, 'title': title})
 
 
-@admin_banned
+@admin_banned()
 @login_required
 def solo_tour_view(request):
     title = 'Solo Tour Booking'
@@ -222,7 +270,7 @@ def solo_tour_view(request):
     return render(request, 'services/forms/solo_tour_form.html', {'form': form, 'title': title})
 
 
-@admin_banned
+@admin_banned()
 @login_required
 def family_tour_view(request):
     title = 'Family Tour Booking'
@@ -240,7 +288,7 @@ def family_tour_view(request):
     return render(request, 'services/forms/family_tour_form.html', {'form': form, 'title': title})
 
 
-@admin_banned
+@admin_banned()
 @login_required
 def college_tour_view(request):
     title = 'Collage Tour Booking'
@@ -259,7 +307,7 @@ def college_tour_view(request):
     return render(request, 'services/forms/college_tour_form.html', {'form': form, 'title': title})
 
 
-@admin_banned
+@admin_banned()
 @login_required
 def honeymoon_view(request):
     title = 'Honeymoon Booking'
@@ -295,7 +343,7 @@ def candidate_register_view(request):
     return render(request, 'services/forms/candidate_register_form.html', {'form': form, 'title': title})
 
 
-@admin_banned
+@admin_banned()
 @login_required
 def vacancy_submit_view(request):
     title = 'Submit Vacancy  '
