@@ -1,4 +1,9 @@
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import redirect
 from django.shortcuts import render
+
+from services.forms import ProductLaunchBookingForm
 
 
 def about_us_view(request):
@@ -27,3 +32,19 @@ def tour_page_view(request):
 
 def marketing_view(request):
     return render(request, 'services/marketing.html', {})
+
+
+@login_required
+def book_product_launch_view(request):
+    title = 'Product Launch Booking'
+    if request.method == 'POST':
+        form = ProductLaunchBookingForm(request.POST)
+        if form.is_valid():
+            event = form.save(commit=False)
+            event.booked_by = request.user
+            event.event_type = 'product_launch'
+            messages.success(request, 'Successfully Saved!')
+            return redirect('home')
+    else:
+        form = ProductLaunchBookingForm()
+    return render(request, 'services/forms/product_launch_form.html', {'form': form, 'title': title})
