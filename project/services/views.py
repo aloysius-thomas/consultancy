@@ -17,6 +17,9 @@ from services.forms import SoloTourForm
 from services.forms import VacancyForm
 from services.forms import WeddingBookingForm
 from services.models import Candidate
+from services.models import Company
+from services.models import Event
+from services.models import Vacancy
 
 
 def about_us_view(request):
@@ -263,3 +266,24 @@ def candidate_list_view(request):
     data = Candidate.objects.all()
     title = 'Candidate List'
     return render(request, 'admin/human_resource/candidate_list.html', {'data': data, 'title': title})
+
+
+def vacancy_list_view(request):
+    data = Vacancy.objects.all()
+    title = 'Vacancy List'
+    return render(request, 'admin/human_resource/vacancy_list.html', {'data': data, 'title': title})
+
+
+def company_list_view(request):
+    data = Company.objects.all()
+    title = 'Company List'
+    return render(request, 'admin/human_resource/company_list.html', {'data': data, 'title': title})
+
+
+def product_launch_list(request):
+    data = Event.objects.filter(event_type='product_launch')
+    status = request.GET.get('status', None)
+    if status:
+        data = data.filter(status=status)
+    title = 'Product Launch List'
+    return render(request, 'admin/event/product_launch_list.html', {'data': data, 'title': title})

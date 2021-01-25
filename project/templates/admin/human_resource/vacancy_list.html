@@ -1,0 +1,45 @@
+{% extends 'base-admin.html' %}
+{% block title %}
+    {{ title }}
+{% endblock %}
+{% block content %}
+    <div class="card">
+        <h5 class="card-header">{{ title }}</h5>
+        <div class="card-body">
+            {% if data %}
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Post Name</th>
+                        <th scope="col">No of Vacancy</th>
+                        <th scope="col">Skills Needed</th>
+                        <th scope="col">Salary Package</th>
+                        <th scope="col">Job Description</th>
+                        <th scope="col">Experience</th>
+                        <th scope="col">Date/Time of interview</th>
+                        <th scope="col">Venue</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for item in data %}
+                        <tr>
+                            <th scope="row">{{ item.id }}</th>
+                            <td>{{ item.post_name }}</td>
+                            <td>{{ item.number_of_post }}</td>
+                            <td>{{ item.skills }}</td>
+                            <td>{{ item.salary_package }}</td>
+                            <td>{{ item.job_description }}</td>
+                            <td>{{ item.experience }}</td>
+                            <td>{{ item.date_of_interview }} on {{ item.time }}</td>
+                            <td>{{ item.venue }} </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p class="alert alert-info m-1"> No Data</p>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

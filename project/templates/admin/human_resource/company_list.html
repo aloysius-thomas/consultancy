@@ -12,24 +12,21 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Name</th>
-                        <th scope="col">Age</th>
-                        <th scope="col">Category</th>
-                        <th scope="col">Qualification</th>
-                        <th scope="col">Job Position</th>
-                        <th scope="col">Address</th>
+                        <th scope="col">Phone Number</th>
                         <th scope="col">Email</th>
+                        <th scope="col">Place</th>
+                        <th scope="col">Type</th>
                     </tr>
                     </thead>
                     <tbody>
                     {% for item in data %}
                         <tr>
                             <th scope="row">{{ item.id }}</th>
-                            <td>{{ item.full_name }}</td>
-                            <td>{{ item.age }}</td>
-                            <td>{{ item.get_category_display }}</td>
-                            <td>{{ item.job_position }}</td>
-                            <td>{{ item.address }} Pin {{ item.pin_code }}</td>
+                            <td>{{ item.name }}</td>
+                            <td>{{ item.phone_number }}</td>
                             <td>{{ item.email }}</td>
+                            <td>{{ item.place }}</td>
+                            <td>{{ item.company_type }}</td>
                         </tr>
                     {% endfor %}
                     </tbody>
