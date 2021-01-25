@@ -143,3 +143,17 @@ class CollegeTourForm(forms.ModelForm):
             'transportation',
             'need_tour_guid',
         }
+
+
+class HoneymoonForm(forms.ModelForm):
+    date = forms.DateTimeField(input_formats=['%d/%m/%Y'])
+
+    class Meta:
+        model = Tour
+        fields = {
+            'date',
+            'number_of_days',
+            'food_items',
+            'type_of_hotel',
+            'need_tour_guid',
+        }

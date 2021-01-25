@@ -8,6 +8,7 @@ from services.forms import BusinessMeetingBookingForm
 from services.forms import CollegeTourForm
 from services.forms import ConstructionForm
 from services.forms import FamilyTourForm
+from services.forms import HoneymoonForm
 from services.forms import LiveShowBookingForm
 from services.forms import ProductLaunchBookingForm
 from services.forms import SoloTourForm
@@ -187,3 +188,20 @@ def college_tour_view(request):
     else:
         form = CollegeTourForm()
     return render(request, 'services/forms/college_tour_form.html', {'form': form, 'title': title})
+
+
+@login_required
+def honeymoon_view(request):
+    title = 'Honeymoon Booking'
+    if request.method == 'POST':
+        form = HoneymoonForm(request.POST)
+        if form.is_valid():
+            tour = form.save(commit=False)
+            tour.booked_by = request.user
+            tour.event_type = 'honeymoon'
+            tour.number_of_person = 2
+            messages.success(request, 'Successfully Saved!')
+            return redirect('home')
+    else:
+        form = CollegeTourForm()
+    return render(request, 'services/forms/honeymoon_tour_form.html', {'form': form, 'title': title})

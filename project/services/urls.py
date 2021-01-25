@@ -10,6 +10,7 @@ from .views import construction_page_view
 from .views import construction_service_view
 from .views import event_management_page_view
 from .views import family_tour_view
+from .views import honeymoon_view
 from .views import human_resource_page_view
 from .views import marketing_view
 from .views import solo_tour_view
@@ -30,4 +31,5 @@ urlpatterns = [
     path('tour/solo-tour/book/', solo_tour_view, name='solo-tour-booking'),
     path('tour/family-tour/book/', family_tour_view, name='family-tour-booking'),
     path('tour/college-tour/book/', college_tour_view, name='college-tour-booking'),
+    path('tour/honeymoon/book/', honeymoon_view, name='honeymoon-booking'),
 ]
