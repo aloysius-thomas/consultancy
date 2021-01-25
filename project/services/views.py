@@ -5,6 +5,7 @@ from django.shortcuts import render
 
 from services.forms import BirthdayBookingForm
 from services.forms import BusinessMeetingBookingForm
+from services.forms import CollegeTourForm
 from services.forms import ConstructionForm
 from services.forms import FamilyTourForm
 from services.forms import LiveShowBookingForm
@@ -169,3 +170,20 @@ def family_tour_view(request):
     else:
         form = FamilyTourForm()
     return render(request, 'services/forms/family_tour_form.html', {'form': form, 'title': title})
+
+
+@login_required
+def college_tour_view(request):
+    title = 'Collage Tour Booking'
+    if request.method == 'POST':
+        form = CollegeTourForm(request.POST)
+        if form.is_valid():
+            tour = form.save(commit=False)
+            tour.booked_by = request.user
+            tour.event_type = 'college'
+            tour.number_of_person = tour.number_of_staff + tour.number_of_girls + tour.number_of_boys
+            messages.success(request, 'Successfully Saved!')
+            return redirect('home')
+    else:
+        form = CollegeTourForm()
+    return render(request, 'services/forms/college_tour_form.html', {'form': form, 'title': title})

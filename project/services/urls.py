@@ -5,6 +5,7 @@ from .views import book_business_meeting_view
 from .views import book_live_show_view
 from .views import book_product_launch_view
 from .views import book_wedding_view
+from .views import college_tour_view
 from .views import construction_page_view
 from .views import construction_service_view
 from .views import event_management_page_view
@@ -28,4 +29,5 @@ urlpatterns = [
     path('construction/<str:service>/book/', construction_service_view, name='construction-service-booking'),
     path('tour/solo-tour/book/', solo_tour_view, name='solo-tour-booking'),
     path('tour/family-tour/book/', family_tour_view, name='family-tour-booking'),
+    path('tour/college-tour/book/', college_tour_view, name='college-tour-booking'),
 ]

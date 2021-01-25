@@ -123,3 +123,23 @@ class FamilyTourForm(forms.ModelForm):
             'transportation',
             'need_tour_guid',
         }
+
+
+class CollegeTourForm(forms.ModelForm):
+    date = forms.DateTimeField(input_formats=['%d/%m/%Y'])
+
+    class Meta:
+        model = Tour
+        fields = {
+            'date',
+            'number_of_days',
+            'number_of_boys',
+            'number_of_girls',
+            'number_of_staff',
+            'number_of_room',
+            'type_of_hotel',
+            'food_items',
+            'number_of_person',
+            'transportation',
+            'need_tour_guid',
+        }
