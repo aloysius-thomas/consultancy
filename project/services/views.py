@@ -1,9 +1,14 @@
 from django.contrib import messages
+from django.contrib.auth import authenticate
+from django.contrib.auth import login
+from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import user_passes_test
 from django.shortcuts import get_object_or_404
 from django.shortcuts import redirect
 from django.shortcuts import render
 
+from services.forms import AdminLoginForm
 from services.forms import BirthdayBookingForm
 from services.forms import BusinessMeetingBookingForm
 from services.forms import CandidateForm
@@ -23,6 +28,10 @@ from services.models import Construction
 from services.models import Event
 from services.models import Tour
 from services.models import Vacancy
+
+
+def admin_required(login_url='admin-login-view'):
+    return user_passes_test(lambda u: u.is_superuser, login_url=login_url)
 
 
 def about_us_view(request):
@@ -270,29 +279,34 @@ def company_create_view(request):
     return render(request, 'services/forms/company_form.html', {'form': form, 'title': title})
 
 
+@admin_required()
 def admin_home_view(request):
     title = 'Home'
     return render(request, 'admin/home.html', {'title': title})
 
 
+@admin_required()
 def candidate_list_view(request):
     data = Candidate.objects.all()
     title = 'Candidate List'
     return render(request, 'admin/human_resource/candidate_list.html', {'data': data, 'title': title})
 
 
+@admin_required()
 def vacancy_list_view(request):
     data = Vacancy.objects.all()
     title = 'Vacancy List'
     return render(request, 'admin/human_resource/vacancy_list.html', {'data': data, 'title': title})
 
 
+@admin_required()
 def company_list_view(request):
     data = Company.objects.all()
     title = 'Company List'
     return render(request, 'admin/human_resource/company_list.html', {'data': data, 'title': title})
 
 
+@admin_required()
 def product_launch_list(request):
     data = Event.objects.filter(event_type='product_launch')
     status = request.GET.get('status', None)
@@ -302,6 +316,7 @@ def product_launch_list(request):
     return render(request, 'admin/event/product_launch_list.html', {'data': data, 'title': title})
 
 
+@admin_required()
 def business_meeting_list(request):
     data = Event.objects.filter(event_type='business_meeting')
     status = request.GET.get('status', None)
@@ -311,6 +326,7 @@ def business_meeting_list(request):
     return render(request, 'admin/event/business_meeting_list.html', {'data': data, 'title': title})
 
 
+@admin_required()
 def live_show_list(request):
     data = Event.objects.filter(event_type='live_show')
     status = request.GET.get('status', None)
@@ -320,6 +336,7 @@ def live_show_list(request):
     return render(request, 'admin/event/live_show_list.html', {'data': data, 'title': title})
 
 
+@admin_required()
 def wedding_list(request):
     data = Event.objects.filter(event_type='wedding')
     status = request.GET.get('status', None)
@@ -329,6 +346,7 @@ def wedding_list(request):
     return render(request, 'admin/event/wedding_list.html', {'data': data, 'title': title})
 
 
+@admin_required()
 def birthday_list(request):
     data = Event.objects.filter(event_type='birthday')
     status = request.GET.get('status', None)
@@ -338,6 +356,7 @@ def birthday_list(request):
     return render(request, 'admin/event/birthday_list.html', {'data': data, 'title': title})
 
 
+@admin_required()
 def construction_list(request):
     data = Construction.objects.filter(service_type='construction')
     status = request.GET.get('status', None)
@@ -347,6 +366,7 @@ def construction_list(request):
     return render(request, 'admin/constructions/construction_list.html', {'data': data, 'title': title})
 
 
+@admin_required()
 def interior_2d_list(request):
     data = Construction.objects.filter(service_type='interior_2d')
     status = request.GET.get('status', None)
@@ -356,6 +376,7 @@ def interior_2d_list(request):
     return render(request, 'admin/constructions/construction_list.html', {'data': data, 'title': title})
 
 
+@admin_required()
 def interior_3d_list(request):
     data = Construction.objects.filter(service_type='interior_3d')
     status = request.GET.get('status', None)
@@ -365,6 +386,7 @@ def interior_3d_list(request):
     return render(request, 'admin/constructions/construction_list.html', {'data': data, 'title': title})
 
 
+@admin_required()
 def solo_tour_list(request):
     data = Tour.objects.filter(tour_type='solo')
     status = request.GET.get('status', None)
@@ -374,6 +396,7 @@ def solo_tour_list(request):
     return render(request, 'admin/tour/solo_tour_list.html', {'data': data, 'title': title})
 
 
+@admin_required()
 def family_tour_list(request):
     data = Tour.objects.filter(tour_type='family')
     status = request.GET.get('status', None)
@@ -383,6 +406,7 @@ def family_tour_list(request):
     return render(request, 'admin/tour/family_tour_list.html', {'data': data, 'title': title})
 
 
+@admin_required()
 def college_tour_list(request):
     data = Tour.objects.filter(tour_type='college')
     status = request.GET.get('status', None)
@@ -392,6 +416,7 @@ def college_tour_list(request):
     return render(request, 'admin/tour/college_tour_list.html', {'data': data, 'title': title})
 
 
+@admin_required()
 def honeymoon_list(request):
     data = Tour.objects.filter(tour_type='honeymoon')
     status = request.GET.get('status', None)
@@ -399,3 +424,23 @@ def honeymoon_list(request):
         data = data.filter(status=status)
     title = 'Honeymoon List '
     return render(request, 'admin/tour/honeymoon_list.html', {'data': data, 'title': title})
+
+
+def admin_login_view(request):
+    if request.method == 'POST':
+        form = AdminLoginForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            user = authenticate(username=username, password=password)
+            login(request, user)
+            return redirect('admin-home')
+    else:
+        form = CompanyForm()
+    return render(request, 'admin/login.html', {'form': form})
+
+
+@admin_required()
+def admin_logout_view(request):
+    logout(request)
+    return redirect('admin-login-view')

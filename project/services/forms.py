@@ -1,4 +1,5 @@
 from django import forms
+from django.contrib.auth import authenticate
 
 from services.models import Candidate
 from services.models import Company
@@ -200,3 +201,22 @@ class CompanyForm(forms.ModelForm):
     class Meta:
         model = Company
         fields = '__all__'
+
+
+class AdminLoginForm(forms.Form):
+    username = forms.CharField()
+    password = forms.CharField(widget=forms.PasswordInput)
+
+    def clean(self, *args, **kwargs):
+        username = self.cleaned_data["username"]
+        password = self.cleaned_data["password"]
+
+        if username and password:
+            user = authenticate(username=username, password=password)
+            if not user:
+                raise forms.ValidationError("Invalid credentials")
+            if not user.check_password(password):
+                raise forms.ValidationError("Invalid credentials")
+            if not user.is_active:
+                raise forms.ValidationError("This user is not longer active")
+        return super(AdminLoginForm, self).clean()
