@@ -133,6 +133,7 @@ class Tour(models.Model):
     )
     booked_by = models.ForeignKey(to=User, on_delete=models.CASCADE)
     tour_type = models.CharField(choices=TOUR_TYPE, max_length=16)
+    date = models.DateField()
     number_of_days = models.IntegerField()
     type_of_hotel = models.CharField(choices=TYPE_OF_HOTEL, max_length=12)
     food_items = models.CharField(choices=FOOD_TYPE, max_length=12)

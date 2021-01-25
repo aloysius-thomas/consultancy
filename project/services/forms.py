@@ -2,6 +2,7 @@ from django import forms
 
 from services.models import Construction
 from services.models import Event
+from services.models import Tour
 
 
 class ProductLaunchBookingForm(forms.ModelForm):
@@ -92,4 +93,15 @@ class ConstructionForm(forms.ModelForm):
             'square_feet',
             'work_progress',
             'construction_plan',
+        }
+
+
+class SoloTourForm(forms.ModelForm):
+    class Meta:
+        model = Tour
+        fields = {
+            'date',
+            'number_of_days',
+            'type_of_hotel',
+            'food_items',
         }

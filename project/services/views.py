@@ -8,6 +8,7 @@ from services.forms import BusinessMeetingBookingForm
 from services.forms import ConstructionForm
 from services.forms import LiveShowBookingForm
 from services.forms import ProductLaunchBookingForm
+from services.forms import SoloTourForm
 from services.forms import WeddingBookingForm
 
 
@@ -133,3 +134,19 @@ def construction_service_view(request, service):
     else:
         form = ConstructionForm()
     return render(request, 'services/forms/construction_form.html', {'form': form, 'title': title})
+
+
+@login_required
+def solo_tour_view(request):
+    title = 'Solo Tour Booking'
+    if request.method == 'POST':
+        form = SoloTourForm(request.POST)
+        if form.is_valid():
+            event = form.save(commit=False)
+            event.booked_by = request.user
+            event.event_type = 'solo'
+            messages.success(request, 'Successfully Saved!')
+            return redirect('home')
+    else:
+        form = SoloTourForm()
+    return render(request, 'services/forms/solo_tour_form.html', {'form': form, 'title': title})
