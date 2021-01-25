@@ -5,6 +5,7 @@ from .views import book_business_meeting_view
 from .views import book_live_show_view
 from .views import book_product_launch_view
 from .views import book_wedding_view
+from .views import candidate_register_view
 from .views import college_tour_view
 from .views import construction_page_view
 from .views import construction_service_view
@@ -15,9 +16,10 @@ from .views import human_resource_page_view
 from .views import marketing_view
 from .views import solo_tour_view
 from .views import tour_page_view
+from .views import vacancy_submit_view
 
 urlpatterns = [
-    path('human-resource/', human_resource_page_view, name='human-resource'),
+    path('consultancy/human-resource/', human_resource_page_view, name='human-resource'),
     path('event/', event_management_page_view, name='event-management'),
     path('construction/', construction_page_view, name='construction'),
     path('tour/', tour_page_view, name='tour'),
@@ -32,4 +34,7 @@ urlpatterns = [
     path('tour/family-tour/book/', family_tour_view, name='family-tour-booking'),
     path('tour/college-tour/book/', college_tour_view, name='college-tour-booking'),
     path('tour/honeymoon/book/', honeymoon_view, name='honeymoon-booking'),
+    path('consultancy/register-candidate/', candidate_register_view, name='register-candidate'),
+    path('consultancy/submit-vacancy/', vacancy_submit_view, name='submit-vacancy'),
+
 ]

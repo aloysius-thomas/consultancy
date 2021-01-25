@@ -1,8 +1,10 @@
 from django import forms
 
+from services.models import Candidate
 from services.models import Construction
 from services.models import Event
 from services.models import Tour
+from services.models import Vacancy
 
 
 class ProductLaunchBookingForm(forms.ModelForm):
@@ -156,4 +158,39 @@ class HoneymoonForm(forms.ModelForm):
             'food_items',
             'type_of_hotel',
             'need_tour_guid',
+        }
+
+
+class CandidateForm(forms.ModelForm):
+    class Meta:
+        model = Candidate
+        fields = {
+            'category',
+            'full_name',
+            'age',
+            'qualification',
+            'skills',
+            'job_position',
+            'address',
+            'pin_code',
+            'email',
+        }
+
+
+class VacancyForm(forms.ModelForm):
+    date_of_interview = forms.DateTimeField(input_formats=['%d/%m/%Y'])
+    time = forms.DateTimeField(input_formats=['%H:%M'])
+
+    class Meta:
+        model = Vacancy
+        fields = {
+            'post_name',
+            'number_of_post',
+            'skills',
+            'salary_package',
+            'job_description',
+            'experience',
+            'date_of_interview',
+            'venue',
+            'time',
         }

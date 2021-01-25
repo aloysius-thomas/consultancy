@@ -28,6 +28,7 @@ class Candidate(models.Model):
         ('student', 'Student'),
         ('working', 'Working'),
     )
+    added_by = models.ForeignKey(to=User, on_delete=models.CASCADE)
     category = models.CharField(max_length=10, choices=CANDIDATE_TYPE)
     full_name = models.CharField(max_length=255)
     age = models.PositiveIntegerField(validators=[MaxValueValidator(99), MinValueValidator(18)])
@@ -44,7 +45,8 @@ class Candidate(models.Model):
 
 
 class Vacancy(models.Model):
-    company = models.ForeignKey(to=Company, on_delete=models.CASCADE)
+    posted_by = models.ForeignKey(to=User, on_delete=models.CASCADE)
+    company = models.ForeignKey(to=Company, on_delete=models.CASCADE, blank=True, null=True)
     post_name = models.CharField(max_length=256)
     number_of_post = models.IntegerField()
     skills = models.TextField()

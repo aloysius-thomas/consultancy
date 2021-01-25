@@ -5,6 +5,7 @@ from django.shortcuts import render
 
 from services.forms import BirthdayBookingForm
 from services.forms import BusinessMeetingBookingForm
+from services.forms import CandidateForm
 from services.forms import CollegeTourForm
 from services.forms import ConstructionForm
 from services.forms import FamilyTourForm
@@ -12,6 +13,7 @@ from services.forms import HoneymoonForm
 from services.forms import LiveShowBookingForm
 from services.forms import ProductLaunchBookingForm
 from services.forms import SoloTourForm
+from services.forms import VacancyForm
 from services.forms import WeddingBookingForm
 
 
@@ -205,3 +207,33 @@ def honeymoon_view(request):
     else:
         form = CollegeTourForm()
     return render(request, 'services/forms/honeymoon_tour_form.html', {'form': form, 'title': title})
+
+
+@login_required
+def candidate_register_view(request):
+    title = 'Register Candidate'
+    if request.method == 'POST':
+        form = CandidateForm(request.POST)
+        if form.is_valid():
+            candidate = form.save(commit=False)
+            candidate.added_by = request.user
+            messages.success(request, 'Successfully Saved!')
+            return redirect('home')
+    else:
+        form = CandidateForm()
+    return render(request, 'services/forms/candidate_register_form.html', {'form': form, 'title': title})
+
+
+@login_required
+def vacancy_submit_view(request):
+    title = 'Submit Vacancy  '
+    if request.method == 'POST':
+        form = VacancyForm(request.POST)
+        if form.is_valid():
+            candidate = form.save(commit=False)
+            candidate.posted_by = request.user
+            messages.success(request, 'Successfully Saved!')
+            return redirect('home')
+    else:
+        form = VacancyForm()
+    return render(request, 'services/forms/vacancy_submit_form.html', {'form': form, 'title': title})
