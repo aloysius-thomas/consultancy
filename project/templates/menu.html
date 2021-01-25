@@ -21,16 +21,46 @@
                                         <li><a href="#">Consultancy</a>
                                             <ul class="submenu">
                                                 <li><a href="{% url 'human-resource' %}">Human Resources</a></li>
+                                                <li><a href="{% url 'register-candidate' %}">Candidate Register</a></li>
+                                                <li><a href="{% url 'submit-vacancy' %}">Submit Vacancy</a></li>
                                             </ul>
                                         </li>
                                         <li><a href="#">Services</a>
                                             <ul class="submenu">
-                                                <li><a href="{% url 'event-management' %}">Event Management</a></li>
+                                                <li><a href="{% url 'event-management' %}">Event Management</a>
+                                                </li>
                                                 <li><a href="{% url 'construction' %}">Construction & Interior
                                                     designing </a></li>
                                                 <li><a href="{% url 'tour' %}">Tour & Travels </a></li>
                                                 <li><a href="{% url 'human-resource' %}">Human Resources</a></li>
                                                 <li><a href="{% url 'marketing' %}">Marketing</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="#">Booking</a>
+                                            <ul class="submenu">
+                                                <b class="p-1"><i>Event</i></b>
+                                                <hr class="p-0 m-0">
+                                                <li><a href="{% url 'product-launch-booking' %}">Product Launch</a></li>
+                                                <li><a href="{% url 'business-meeting-booking' %}">Business Meeting</a>
+                                                </li>
+                                                <li><a href="{% url 'live-show-booking' %}">Live Show </a></li>
+                                                <li><a href="{% url 'wedding-booking' %}">Wedding</a></li>
+                                                <li><a href="{% url 'birthday-booking' %}">Birthday</a></li>
+                                                <b class="p-1"><i>Construction</i></b>
+                                                <hr class="p-0 m-0">
+                                                <li><a href="{% url 'construction-service-booking' 'construction' %}">Construction</a>
+                                                </li>
+                                                <li><a href="{% url 'construction-service-booking' 'interior_2d' %}">Interior
+                                                    2D-Drawing</a></li>
+                                                <li><a href="{% url 'construction-service-booking' 'interior_3d' %}">Interior
+                                                    3D-Drawing</a></li>
+                                                <b class="p-1"><i>Tour</i></b>
+                                                <hr class="p-0 m-0">
+                                                <li><a href="{% url 'solo-tour-booking' %}">Solo Tour</a></li>
+                                                <li><a href="{% url 'family-tour-booking' %}">Family Tour</a></li>
+                                                <li><a href="{% url 'college-tour-booking' %}">College Tour</a></li>
+                                                <li><a href="{% url 'honeymoon-booking' %}">Honeymoon</a></li>
+
                                             </ul>
                                         </li>
                                         <li><a href="#">Company</a></li>

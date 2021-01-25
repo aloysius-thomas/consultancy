@@ -1,7 +1,6 @@
 from django.contrib.auth import authenticate
 from django.contrib.auth import login
 from django.contrib.auth import logout
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView
 from django.http import HttpResponseRedirect
 from django.shortcuts import redirect
@@ -9,6 +8,7 @@ from django.shortcuts import render
 from django.urls import reverse
 
 from accounts.forms import CustomUserCreationForm
+from accounts.forms import LoginForm
 
 
 def home(request):
@@ -32,6 +32,7 @@ def register(request):
 
 class LoginCustomView(LoginView):
     template_name = 'accounts/login.html'
+    form_class = LoginForm
     redirect_authenticated_user = True
 
 

@@ -1,7 +1,12 @@
 from django import forms
+from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.forms import UserCreationForm
 
 from accounts.models import User
+
+
+class LoginForm(AuthenticationForm):
+    username = forms.EmailField(widget=forms.TextInput(attrs={'autofocus': True}), label='Email')
 
 
 class CustomUserCreationForm(UserCreationForm):

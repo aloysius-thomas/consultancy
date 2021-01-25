@@ -29,11 +29,14 @@ urlpatterns = [
     path('event/live-show/book/', book_live_show_view, name='live-show-booking'),
     path('event/wedding/book/', book_wedding_view, name='wedding-booking'),
     path('event/birthday/book/', book_birthday_view, name='birthday-booking'),
+
     path('construction/<str:service>/book/', construction_service_view, name='construction-service-booking'),
+
     path('tour/solo-tour/book/', solo_tour_view, name='solo-tour-booking'),
     path('tour/family-tour/book/', family_tour_view, name='family-tour-booking'),
     path('tour/college-tour/book/', college_tour_view, name='college-tour-booking'),
     path('tour/honeymoon/book/', honeymoon_view, name='honeymoon-booking'),
+
     path('consultancy/register-candidate/', candidate_register_view, name='register-candidate'),
     path('consultancy/submit-vacancy/', vacancy_submit_view, name='submit-vacancy'),
 
