@@ -1,5 +1,8 @@
 from django.urls import path
 
+from .views import accept_construction
+from .views import accept_event
+from .views import accept_tour
 from .views import admin_home_view
 from .views import admin_login_view
 from .views import admin_logout_view
@@ -16,6 +19,9 @@ from .views import interior_2d_list
 from .views import interior_3d_list
 from .views import live_show_list
 from .views import product_launch_list
+from .views import reject_construction
+from .views import reject_event
+from .views import reject_tour
 from .views import solo_tour_list
 from .views import vacancy_list_view
 from .views import wedding_list
@@ -34,13 +40,19 @@ urlpatterns = [
     path('event/live-show/list/', live_show_list, name='event-live-show-list'),
     path('event/wedding/list/', wedding_list, name='event-wedding-list'),
     path('event/birthday/list/', birthday_list, name='event-birthday-list'),
+    path('event/<id:event_id>/accept/', accept_event, name='accept-event'),
+    path('event/<id:event_id>/reject/', reject_event, name='reject-event'),
 
     path('constructions/construction/list/', construction_list, name='constructions-construction-list'),
     path('constructions/interior-2d/list/', interior_2d_list, name='constructions-interior_2d-list'),
     path('constructions/interior-3d/list/', interior_3d_list, name='constructions-interior_3d-list'),
+    path('constructions/<id:construction_id>/accept/', accept_construction, name='accept-constructions'),
+    path('constructions/<id:construction_id>/reject/', reject_construction, name='reject-constructions'),
 
     path('tour/solo/list/', solo_tour_list, name='tour-solo-list'),
     path('tour/family/list/', family_tour_list, name='tour-family-list'),
     path('tour/college/list/', college_tour_list, name='tour-college-list'),
     path('tour/honeymoon/list/', honeymoon_list, name='tour-honeymoon-list'),
+    path('tour/<id:tour_id>/accept/', accept_tour, name='accept-tour'),
+    path('tour/<id:tour_id>/reject/', reject_tour, name='reject-tour'),
 ]

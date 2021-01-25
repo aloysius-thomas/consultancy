@@ -400,6 +400,46 @@ def birthday_list(request):
     return render(request, 'admin/event/birthday_list.html', {'data': data, 'title': title})
 
 
+def get_event_redirect_url(event):
+    if event.event_type == 'product_launch':
+        url = 'event-product-launch-list'
+    elif event.event_type == 'business_meeting':
+        url = 'event-business-meeting-list'
+    elif event.event_type == 'live_show':
+        url = 'event-live-show-list'
+    elif event.event_type == 'wedding':
+        url = 'event-wedding-list'
+    elif event.event_type == 'birthday':
+        url = 'event-birthday-list'
+    else:
+        url = 'admin-home'
+    return url
+
+
+def accept_event(request, event_id):
+    try:
+        event = Event.objects.get(id=event_id)
+    except Event.DoesNotExist:
+        messages.error(request, 'item not found')
+        return redirect('admin-home')
+    else:
+        event.status = 'approved'
+        event.save()
+        return redirect(get_event_redirect_url(event))
+
+
+def reject_event(request, event_id):
+    try:
+        event = Event.objects.get(id=event_id)
+    except Event.DoesNotExist:
+        messages.error(request, 'item not found')
+        return redirect('admin-home')
+    else:
+        event.status = 'rejected'
+        event.save()
+        return redirect(get_event_redirect_url(event))
+
+
 @admin_required()
 def construction_list(request):
     data = Construction.objects.filter(service_type='construction')
@@ -430,6 +470,44 @@ def interior_3d_list(request):
     return render(request, 'admin/constructions/construction_list.html', {'data': data, 'title': title})
 
 
+def get_construction_redirect_url(construction):
+    if construction.service_type == 'construction':
+        url = redirect('constructions-construction-list')
+    elif construction.service_type == 'interior_2d':
+        url = redirect('constructions-interior_2d-list')
+    elif construction.service_type == 'interior_3d':
+        url = redirect('constructions-interior_3d-list')
+    else:
+        url = redirect('admin-home')
+    return url
+
+
+def accept_construction(request, construction_id):
+    try:
+        construction = Construction.objects.get(id=construction_id)
+    except Construction.DoesNotExist:
+        messages.error(request, 'item not found')
+        return redirect('admin-home')
+    else:
+        construction.status = 'approved'
+        construction.save()
+        messages.success(request, f'{construction.get_service_type_display()} Approved')
+        return get_construction_redirect_url(construction)
+
+
+def reject_construction(request, construction_id):
+    try:
+        construction = Construction.objects.get(id=construction_id)
+    except Construction.DoesNotExist:
+        messages.error(request, 'item not found')
+        return redirect('admin-home')
+    else:
+        construction.status = 'rejected'
+        construction.save()
+        messages.error(request, f'{construction.get_service_type_display()} Rejected')
+        return get_construction_redirect_url(construction)
+
+
 @admin_required()
 def solo_tour_list(request):
     data = Tour.objects.filter(tour_type='solo')
@@ -458,6 +536,46 @@ def college_tour_list(request):
         data = data.filter(status=status)
     title = 'College Tour List'
     return render(request, 'admin/tour/college_tour_list.html', {'data': data, 'title': title})
+
+
+def get_tour_redirect_url(tour):
+    if tour.tour_type == 'solo':
+        url = redirect('tour-solo-list')
+    elif tour.tour_type == 'family':
+        url = redirect('tour-family-list')
+    elif tour.tour_type == 'college':
+        url = redirect('tour-college-list')
+    elif tour.tour_type == 'honeymoon':
+        url = redirect('tour-honeymoon-list')
+    else:
+        url = redirect('admin-home')
+    return url
+
+
+def accept_tour(request, tour_id):
+    try:
+        tour = Tour.objects.get(id=tour_id)
+    except Tour.DoesNotExist:
+        messages.error(request, 'item not found')
+        return redirect('admin-home')
+    else:
+        tour.status = 'approved'
+        tour.save()
+        messages.success(request, f'{tour.get_tour_type_display()} Approved')
+        return get_tour_redirect_url(tour)
+
+
+def reject_tour(request, tour_id):
+    try:
+        tour = Tour.objects.get(id=tour_id)
+    except Tour.DoesNotExist:
+        messages.error(request, 'item not found')
+        return redirect('admin-home')
+    else:
+        tour.status = 'rejected'
+        tour.save()
+        messages.error(request, f'{tour.get_tour_type_display()} Rejected')
+        return get_tour_redirect_url(tour)
 
 
 @admin_required()
