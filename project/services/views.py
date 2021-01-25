@@ -287,3 +287,39 @@ def product_launch_list(request):
         data = data.filter(status=status)
     title = 'Product Launch List'
     return render(request, 'admin/event/product_launch_list.html', {'data': data, 'title': title})
+
+
+def business_meeting_list(request):
+    data = Event.objects.filter(event_type='business_meeting')
+    status = request.GET.get('status', None)
+    if status:
+        data = data.filter(status=status)
+    title = 'Business Meeting List'
+    return render(request, 'admin/event/business_meeting_list.html', {'data': data, 'title': title})
+
+
+def live_show_list(request):
+    data = Event.objects.filter(event_type='live_show')
+    status = request.GET.get('status', None)
+    if status:
+        data = data.filter(status=status)
+    title = 'Live Show List'
+    return render(request, 'admin/event/live_show_list.html', {'data': data, 'title': title})
+
+
+def wedding_list(request):
+    data = Event.objects.filter(event_type='wedding')
+    status = request.GET.get('status', None)
+    if status:
+        data = data.filter(status=status)
+    title = 'Wedding List'
+    return render(request, 'admin/event/wedding_list.html', {'data': data, 'title': title})
+
+
+def birthday_list(request):
+    data = Event.objects.filter(event_type='birthday')
+    status = request.GET.get('status', None)
+    if status:
+        data = data.filter(status=status)
+    title = 'Birthday  List'
+    return render(request, 'admin/event/birthday_list.html', {'data': data, 'title': title})
