@@ -4,13 +4,17 @@ from .views import admin_home_view
 from .views import birthday_list
 from .views import business_meeting_list
 from .views import candidate_list_view
+from .views import college_tour_list
 from .views import company_create_view
 from .views import company_list_view
 from .views import construction_list
+from .views import family_tour_list
+from .views import honeymoon_list
 from .views import interior_2d_list
 from .views import interior_3d_list
 from .views import live_show_list
 from .views import product_launch_list
+from .views import solo_tour_list
 from .views import vacancy_list_view
 from .views import wedding_list
 
@@ -30,4 +34,9 @@ urlpatterns = [
     path('constructions/construction/list/', construction_list, name='constructions-construction-list'),
     path('constructions/interior-2d/list/', interior_2d_list, name='constructions-interior_2d-list'),
     path('constructions/interior-3d/list/', interior_3d_list, name='constructions-interior_3d-list'),
+
+    path('tour/solo/list/', solo_tour_list, name='tour-solo-list'),
+    path('tour/family/list/', family_tour_list, name='tour-family-list'),
+    path('tour/college/list/', college_tour_list, name='tour-college-list'),
+    path('tour/honeymoon/list/', honeymoon_list, name='tour-honeymoon-list'),
 ]
