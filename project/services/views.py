@@ -251,3 +251,8 @@ def company_create_view(request):
     else:
         form = CompanyForm()
     return render(request, 'services/forms/company_form.html', {'form': form, 'title': title})
+
+
+def admin_home_view(request):
+    title = 'Home'
+    return render(request, 'admin/home.html', {'title': title})
