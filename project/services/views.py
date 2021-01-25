@@ -34,6 +34,10 @@ def admin_required(login_url='admin-login-view'):
     return user_passes_test(lambda u: u.is_superuser, login_url=login_url)
 
 
+def admin_banned(login_url='login'):
+    return user_passes_test(lambda u: u.is_superuser == False, login_url=login_url)
+
+
 def about_us_view(request):
     return render(request, 'services/about-us.html', {})
 
@@ -73,6 +77,7 @@ def company_details_view(request, company_id):
 
 
 @login_required
+@admin_banned()
 def book_product_launch_view(request):
     title = 'Product Launch Booking'
     if request.method == 'POST':
@@ -81,6 +86,7 @@ def book_product_launch_view(request):
             event = form.save(commit=False)
             event.booked_by = request.user
             event.event_type = 'product_launch'
+            event.save()
             messages.success(request, 'Successfully Saved!')
             return redirect('home')
     else:
@@ -88,6 +94,7 @@ def book_product_launch_view(request):
     return render(request, 'services/forms/product_launch_form.html', {'form': form, 'title': title})
 
 
+@admin_banned
 @login_required
 def book_business_meeting_view(request):
     title = 'Business Meeting Booking'
@@ -97,6 +104,7 @@ def book_business_meeting_view(request):
             event = form.save(commit=False)
             event.booked_by = request.user
             event.event_type = 'business_meeting'
+            event.save()
             messages.success(request, 'Successfully Saved!')
             return redirect('home')
     else:
@@ -104,6 +112,7 @@ def book_business_meeting_view(request):
     return render(request, 'services/forms/business_meeting_form.html', {'form': form, 'title': title})
 
 
+@admin_banned
 @login_required
 def book_live_show_view(request):
     title = 'Live Show Booking'
@@ -113,6 +122,7 @@ def book_live_show_view(request):
             event = form.save(commit=False)
             event.booked_by = request.user
             event.event_type = 'live_show'
+            event.save()
             messages.success(request, 'Successfully Saved!')
             return redirect('home')
     else:
@@ -120,6 +130,7 @@ def book_live_show_view(request):
     return render(request, 'services/forms/live_show_form.html', {'form': form, 'title': title})
 
 
+@admin_banned
 @login_required
 def book_wedding_view(request):
     title = 'Wedding Booking'
@@ -129,6 +140,7 @@ def book_wedding_view(request):
             event = form.save(commit=False)
             event.booked_by = request.user
             event.event_type = 'wedding'
+            event.save()
             messages.success(request, 'Successfully Saved!')
             return redirect('home')
     else:
@@ -136,6 +148,7 @@ def book_wedding_view(request):
     return render(request, 'services/forms/wedding_form.html', {'form': form, 'title': title})
 
 
+@admin_banned
 @login_required
 def book_birthday_view(request):
     title = 'Birthday Booking'
@@ -145,6 +158,7 @@ def book_birthday_view(request):
             event = form.save(commit=False)
             event.booked_by = request.user
             event.event_type = 'birthday'
+            event.save()
             messages.success(request, 'Successfully Saved!')
             return redirect('home')
     else:
@@ -152,6 +166,7 @@ def book_birthday_view(request):
     return render(request, 'services/forms/birthday_form.html', {'form': form, 'title': title})
 
 
+@admin_banned
 @login_required
 def construction_service_view(request, service):
     title = f'{service.title()} Booking'
@@ -161,6 +176,7 @@ def construction_service_view(request, service):
             event = form.save(commit=False)
             event.booked_by = request.user
             event.service_type = service
+            event.save()
             messages.success(request, 'Successfully Saved!')
             return redirect('home')
     else:
@@ -168,6 +184,7 @@ def construction_service_view(request, service):
     return render(request, 'services/forms/construction_form.html', {'form': form, 'title': title})
 
 
+@admin_banned
 @login_required
 def solo_tour_view(request):
     title = 'Solo Tour Booking'
@@ -179,6 +196,7 @@ def solo_tour_view(request):
             tour.tour_type = 'solo'
             tour.number_of_person = 1
             tour.need_tour_guid = 'n'
+            tour.save()
             messages.success(request, 'Successfully Saved!')
             return redirect('home')
     else:
@@ -186,6 +204,7 @@ def solo_tour_view(request):
     return render(request, 'services/forms/solo_tour_form.html', {'form': form, 'title': title})
 
 
+@admin_banned
 @login_required
 def family_tour_view(request):
     title = 'Family Tour Booking'
@@ -195,6 +214,7 @@ def family_tour_view(request):
             tour = form.save(commit=False)
             tour.booked_by = request.user
             tour.event_type = 'family'
+            tour.save()
             messages.success(request, 'Successfully Saved!')
             return redirect('home')
     else:
@@ -202,6 +222,7 @@ def family_tour_view(request):
     return render(request, 'services/forms/family_tour_form.html', {'form': form, 'title': title})
 
 
+@admin_banned
 @login_required
 def college_tour_view(request):
     title = 'Collage Tour Booking'
@@ -212,6 +233,7 @@ def college_tour_view(request):
             tour.booked_by = request.user
             tour.event_type = 'college'
             tour.number_of_person = tour.number_of_staff + tour.number_of_girls + tour.number_of_boys
+            tour.save()
             messages.success(request, 'Successfully Saved!')
             return redirect('home')
     else:
@@ -219,6 +241,7 @@ def college_tour_view(request):
     return render(request, 'services/forms/college_tour_form.html', {'form': form, 'title': title})
 
 
+@admin_banned
 @login_required
 def honeymoon_view(request):
     title = 'Honeymoon Booking'
@@ -229,6 +252,7 @@ def honeymoon_view(request):
             tour.booked_by = request.user
             tour.event_type = 'honeymoon'
             tour.number_of_person = 2
+            tour.save()
             messages.success(request, 'Successfully Saved!')
             return redirect('home')
     else:
@@ -236,6 +260,7 @@ def honeymoon_view(request):
     return render(request, 'services/forms/honeymoon_tour_form.html', {'form': form, 'title': title})
 
 
+@admin_banned()
 @login_required
 def candidate_register_view(request):
     title = 'Register Candidate'
@@ -244,6 +269,7 @@ def candidate_register_view(request):
         if form.is_valid():
             candidate = form.save(commit=False)
             candidate.added_by = request.user
+            candidate.save()
             messages.success(request, 'Successfully Saved!')
             return redirect('home')
     else:
@@ -251,6 +277,7 @@ def candidate_register_view(request):
     return render(request, 'services/forms/candidate_register_form.html', {'form': form, 'title': title})
 
 
+@admin_banned
 @login_required
 def vacancy_submit_view(request):
     title = 'Submit Vacancy  '
@@ -259,6 +286,7 @@ def vacancy_submit_view(request):
         if form.is_valid():
             candidate = form.save(commit=False)
             candidate.posted_by = request.user
+            candidate.save()
             messages.success(request, 'Successfully Saved!')
             return redirect('home')
     else:
@@ -266,7 +294,7 @@ def vacancy_submit_view(request):
     return render(request, 'services/forms/vacancy_submit_form.html', {'form': form, 'title': title})
 
 
-@login_required
+@admin_required
 def company_create_view(request):
     title = 'Submit Company  '
     if request.method == 'POST':

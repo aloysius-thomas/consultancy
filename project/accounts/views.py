@@ -33,7 +33,6 @@ def register(request):
 class LoginCustomView(LoginView):
     template_name = 'accounts/login.html'
     form_class = LoginForm
-    redirect_authenticated_user = True
 
 
 def logout_view(request):

@@ -219,4 +219,5 @@ class AdminLoginForm(forms.Form):
                 raise forms.ValidationError("Invalid credentials")
             if not user.is_active:
                 raise forms.ValidationError("This user is not longer active")
+
         return super(AdminLoginForm, self).clean()
