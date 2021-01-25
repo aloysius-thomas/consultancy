@@ -19,3 +19,7 @@ def event_management_page_view(request):
 
 def construction_page_view(request):
     return render(request, 'services/construction.html', {})
+
+
+def tour_page_view(request):
+    return render(request, 'services/tour.html', {})
