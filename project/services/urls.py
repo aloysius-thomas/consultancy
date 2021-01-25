@@ -1,5 +1,6 @@
 from django.urls import path
 
+from .views import book_business_meeting_view
 from .views import book_product_launch_view
 from .views import construction_page_view
 from .views import event_management_page_view
@@ -14,4 +15,5 @@ urlpatterns = [
     path('tour/', tour_page_view, name='tour'),
     path('marketing/', marketing_view, name='marketing'),
     path('event/product-launch/book/', book_product_launch_view, name='product-launch-booking'),
+    path('event/business-meeting/book/', book_business_meeting_view, name='business-meeting-booking'),
 ]

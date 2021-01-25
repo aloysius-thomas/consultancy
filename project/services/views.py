@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect
 from django.shortcuts import render
 
+from services.forms import BusinessMeetingBookingForm
 from services.forms import ProductLaunchBookingForm
 
 
@@ -48,3 +49,19 @@ def book_product_launch_view(request):
     else:
         form = ProductLaunchBookingForm()
     return render(request, 'services/forms/product_launch_form.html', {'form': form, 'title': title})
+
+
+@login_required
+def book_business_meeting_view(request):
+    title = 'Business Meeting Booking'
+    if request.method == 'POST':
+        form = BusinessMeetingBookingForm(request.POST)
+        if form.is_valid():
+            event = form.save(commit=False)
+            event.booked_by = request.user
+            event.event_type = 'business_meeting'
+            messages.success(request, 'Successfully Saved!')
+            return redirect('home')
+    else:
+        form = BusinessMeetingBookingForm()
+    return render(request, 'services/forms/business_meeting_form.html', {'form': form, 'title': title})
