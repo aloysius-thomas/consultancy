@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block contents %}
+
+    <!-- Hero Start-->
+    <div class="hero-area2  slider-height2 hero-overly2 d-flex align-items-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="hero-cap text-center pt-50">
+                        <h2>Construction & Interior Designing</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="align-items-center m-5">
+            <div class="row">
+                <div class="col-12" style="text-align: justify; text-justify: inter-word;">
+                    <h3 class="pb-1">Interior Designing 2D Drawing</h3>
+                    <p class="pt-1">Architecture is a topic related to planning, designing and constructing a building
+                        or a house. And interior theory is a small part of Architecture.
+                        Interior Theory mainly deals with designing or planning the interior of a building. The one who
+                        plans and designs the interior of a building is an interior designer. Interior designers make
+                        the interior spaces more beautiful and creative by specifying the space requirements. They make
+                        use of Blueprints to work on interiors. And they must be aware of building codes and inspection
+                        regulations as well as universal accessibility standards. Interior design course or profession
+                        includes conceptual development, space planning, site inspections, programming, research,
+                        communicating with the stakeholders of a project, construction management, and execution of the
+                        design. Interior design is mainly all about how we experience spaces inside a building. The
+                        profession is creative and technical solutions used to achieve beautiful and safe built interior
+                        environments. Designs are created according to the space, type of space and the physical
+                        location of the project. The interior design process follows a systematic method, including many
+                        research, analysis and integration of knowledge into the creative process. Who You Can Become
+                        Getting hand-on experience in ‘Interior Theory’ will open door to vast number of opportunities,
+                        the roles to which you'll get hired are : Product Designer CAD Specialist Interior Designer
+                        Residential designer Corporate designer Who Should Go For This Course The course is for those
+                        who have a background in Civil / Architect.Candidates can register for the certificate programs
+                        straight after finishing the first year of diploma/Bachelor in Engineering / Technology.
+                    </p>
+                </div>
+                <div class="m-4">
+                    <a href="{% url 'construction-service-booking'  'interior_2d' %}">
+                        <button class="btn btn--radius-2 btn--red" type="submit"> Pick Your Order</button>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block contents %}
+
+    <!-- Hero Start-->
+    <div class="hero-area2  slider-height2 hero-overly2 d-flex align-items-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="hero-cap text-center pt-50">
+                        <h2>Construction & Interior Designing</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="align-items-center m-5">
+            <div class="row">
+                <div class="col-12" style="text-align: justify; text-justify: inter-word;">
+                    <h3 class="pb-1">Construction</h3>
+                    <p class="pt-1">Excellence Construction & Interior is a registered organization having Office in
+                        Thrissur District and our operations wrap all over Kerala. We create and design residence/office
+                        & plans as per the choice of the customers and undertake the construction work from site
+                        leveling, excavation, complete structure from foundation to roof, painting and furnishing. The
+                        management is always available to respond to the queries as and when required even odd hours.
+                        Our group of professionals with well qualified engineers and young talented staff are ready to
+                        meet the customer's requirement even on an urgent basis. Our vast experience in the construction
+                        field for over 10 years will help the customers to get the right choice. We have well known
+                        regular suppliers and they supply the construction materials in the right quality with a very
+                        competitive rate which will help the customers to rely upon.We specialise in interior design and
+                        construction of bare shell corporate and commercial spaces. We assist our clients either with
+                        full turnkey design and build solutions, stand-alone interior design (space and theme planning),
+                        or project execution (construction only). Our talented and skilled in-house design team is fully
+                        trained to provide the best corporate interiors solutions in India. These office fitout services
+                        are tailored to the specific requirements of the individual client company, in each and every
+                        project. Our team comes from a broad range of backgrounds, which enables us to operate
+                        effectively across our various service fields. Amongst them, our team members have decades of
+                        experience with millions of square feet of space designed and built. This knowledge and
+                        experience comes to fore to produce functional, sustainable and efficient environments for our
+                        clients, on time, and within budget. We invite you to perceive more about our projects, from
+                        office/residence/renovation design and build to stand-alone interior design.Excellence
+                        Construction & Interior has an excellent track record of constructing the best quality office
+                        interiors at competitive prices. We aim to build the foundation of your business with our
+                        world-class office design and turnkey interiors in Thrissur ,Kerala and all over India!
+                    </p>
+                </div>
+                <div class="m-4">
+                    <a href="{% url 'construction-service-booking'  'construction' %}">
+                        <button class="btn btn--radius-2 btn--red" type="submit"> Pick Your Order</button>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -12,11 +12,14 @@ from .views import college_tour_view
 from .views import company_view
 from .views import company_details_view
 from .views import construction_page_view
+from .views import construction_service_page_view
 from .views import construction_service_view
 from .views import event_management_page_view
 from .views import family_tour_view
 from .views import honeymoon_view
 from .views import human_resource_page_view
+from .views import interior_2d_page_view
+from .views import interior_3d_page_view
 from .views import live_show_page_view
 from .views import marketing_view
 from .views import product_launch_page_view
@@ -35,6 +38,9 @@ urlpatterns = [
     path('event/wedding/', wedding_page_view, name='event-management-wedding'),
     path('event/birthday/', birthday_page_view, name='event-management-birthday'),
     path('construction/', construction_page_view, name='construction'),
+    path('construction/construction/', construction_service_page_view, name='construction-construction'),
+    path('construction/interior-2d-drawing/', interior_2d_page_view, name='construction-interior-2d-drawing'),
+    path('construction/interior-3d-drawing/', interior_3d_page_view, name='construction-interior-3d-drawing'),
     path('tour/', tour_page_view, name='tour'),
     path('marketing/', marketing_view, name='marketing'),
     path('event/product-launch/book/', book_product_launch_view, name='product-launch-booking'),
