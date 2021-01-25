@@ -16,6 +16,7 @@ from services.forms import ProductLaunchBookingForm
 from services.forms import SoloTourForm
 from services.forms import VacancyForm
 from services.forms import WeddingBookingForm
+from services.models import Candidate
 
 
 def about_us_view(request):
@@ -256,3 +257,9 @@ def company_create_view(request):
 def admin_home_view(request):
     title = 'Home'
     return render(request, 'admin/home.html', {'title': title})
+
+
+def candidate_list_view(request):
+    data = Candidate.objects.all()
+    title = 'Candidate List'
+    return render(request, 'admin/human_resource/candidate_list.html', {'data': data, 'title': title})

@@ -1,0 +1,45 @@
+{% extends 'base-admin.html' %}
+{% block title %}
+    {{ title }}
+{% endblock %}
+{% block content %}
+    <div class="card">
+        <h5 class="card-header">{{ title }}</h5>
+        <div class="card-body">
+            {% if data %}
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Age</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Qualification</th>
+                        <th scope="col">Job Position</th>
+                        <th scope="col">Address</th>
+                        <th scope="col">Email</th>
+                        <th scope="col"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for item in data %}
+                        <tr>
+                            <th scope="row">{{ item.id }}</th>
+                            <td>{{ item.full_name }}</td>
+                            <td>{{ item.age }}</td>
+                            <td>{{ item.get_category_display }}</td>
+                            <td>{{ item.job_position }}</td>
+                            <td>{{ item.address }} Pin {{ item.pin_code }}</td>
+                            <td>{{ item.email }}</td>
+                            <td></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p class="alert alert-info m-1"> No Data</p>
+            {% endif %}
+
+        </div>
+    </div>
+{% endblock %}
