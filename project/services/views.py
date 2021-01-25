@@ -23,3 +23,7 @@ def construction_page_view(request):
 
 def tour_page_view(request):
     return render(request, 'services/tour.html', {})
+
+
+def marketing_view(request):
+    return render(request, 'services/marketing.html', {})
