@@ -6,6 +6,7 @@ from django.shortcuts import render
 from services.forms import BirthdayBookingForm
 from services.forms import BusinessMeetingBookingForm
 from services.forms import ConstructionForm
+from services.forms import FamilyTourForm
 from services.forms import LiveShowBookingForm
 from services.forms import ProductLaunchBookingForm
 from services.forms import SoloTourForm
@@ -128,7 +129,7 @@ def construction_service_view(request, service):
         if form.is_valid():
             event = form.save(commit=False)
             event.booked_by = request.user
-            event.event_type = service
+            event.service_type = service
             messages.success(request, 'Successfully Saved!')
             return redirect('home')
     else:
@@ -142,11 +143,29 @@ def solo_tour_view(request):
     if request.method == 'POST':
         form = SoloTourForm(request.POST)
         if form.is_valid():
-            event = form.save(commit=False)
-            event.booked_by = request.user
-            event.event_type = 'solo'
+            tour = form.save(commit=False)
+            tour.booked_by = request.user
+            tour.tour_type = 'solo'
+            tour.number_of_person = 1
+            tour.need_tour_guid = 'n'
             messages.success(request, 'Successfully Saved!')
             return redirect('home')
     else:
         form = SoloTourForm()
     return render(request, 'services/forms/solo_tour_form.html', {'form': form, 'title': title})
+
+
+@login_required
+def family_tour_view(request):
+    title = 'Family Tour Booking'
+    if request.method == 'POST':
+        form = FamilyTourForm(request.POST)
+        if form.is_valid():
+            tour = form.save(commit=False)
+            tour.booked_by = request.user
+            tour.event_type = 'family'
+            messages.success(request, 'Successfully Saved!')
+            return redirect('home')
+    else:
+        form = FamilyTourForm()
+    return render(request, 'services/forms/family_tour_form.html', {'form': form, 'title': title})
