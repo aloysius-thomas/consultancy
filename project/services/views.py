@@ -18,6 +18,7 @@ from services.forms import VacancyForm
 from services.forms import WeddingBookingForm
 from services.models import Candidate
 from services.models import Company
+from services.models import Construction
 from services.models import Event
 from services.models import Vacancy
 
@@ -323,3 +324,30 @@ def birthday_list(request):
         data = data.filter(status=status)
     title = 'Birthday  List'
     return render(request, 'admin/event/birthday_list.html', {'data': data, 'title': title})
+
+
+def construction_list(request):
+    data = Construction.objects.filter(service_type='construction')
+    status = request.GET.get('status', None)
+    if status:
+        data = data.filter(status=status)
+    title = 'Construction  List'
+    return render(request, 'admin/constructions/construction_list.html', {'data': data, 'title': title})
+
+
+def interior_2d_list(request):
+    data = Construction.objects.filter(service_type='interior_2d')
+    status = request.GET.get('status', None)
+    if status:
+        data = data.filter(status=status)
+    title = 'Interior 2D-Drawing  List'
+    return render(request, 'admin/constructions/construction_list.html', {'data': data, 'title': title})
+
+
+def interior_3d_list(request):
+    data = Construction.objects.filter(service_type='interior_3d')
+    status = request.GET.get('status', None)
+    if status:
+        data = data.filter(status=status)
+    title = 'Interior 3D-Drawing  List'
+    return render(request, 'admin/constructions/construction_list.html', {'data': data, 'title': title})
