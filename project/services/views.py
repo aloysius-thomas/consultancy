@@ -20,6 +20,7 @@ from services.models import Candidate
 from services.models import Company
 from services.models import Construction
 from services.models import Event
+from services.models import Tour
 from services.models import Vacancy
 
 
@@ -351,3 +352,39 @@ def interior_3d_list(request):
         data = data.filter(status=status)
     title = 'Interior 3D-Drawing  List'
     return render(request, 'admin/constructions/construction_list.html', {'data': data, 'title': title})
+
+
+def solo_tour_list(request):
+    data = Tour.objects.filter(tour_type='solo')
+    status = request.GET.get('status', None)
+    if status:
+        data = data.filter(status=status)
+    title = 'Solo Tour List'
+    return render(request, 'admin/tour/solo_tour_list.html', {'data': data, 'title': title})
+
+
+def family_tour_list(request):
+    data = Tour.objects.filter(tour_type='family')
+    status = request.GET.get('status', None)
+    if status:
+        data = data.filter(status=status)
+    title = 'Family Tour List'
+    return render(request, 'admin/tour/family_tour_list.html', {'data': data, 'title': title})
+
+
+def college_tour_list(request):
+    data = Tour.objects.filter(tour_type='college')
+    status = request.GET.get('status', None)
+    if status:
+        data = data.filter(status=status)
+    title = 'College Tour List'
+    return render(request, 'admin/tour/college_tour_list.html', {'data': data, 'title': title})
+
+
+def honeymoon_list(request):
+    data = Tour.objects.filter(tour_type='honeymoon')
+    status = request.GET.get('status', None)
+    if status:
+        data = data.filter(status=status)
+    title = 'Honeymoon List '
+    return render(request, 'admin/tour/honeymoon_list.html', {'data': data, 'title': title})

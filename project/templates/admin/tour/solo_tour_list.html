@@ -1,0 +1,51 @@
+{% extends 'base-admin.html' %}
+{% block title %}
+    {{ title }}
+{% endblock %}
+{% block content %}
+    <div class="card">
+        <h5 class="card-header">{{ title }}</h5>
+        <div class="card-body">
+            {% if data %}
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Booked By</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">For</th>
+                        <th scope="col">Hotel</th>
+                        <th scope="col"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for item in data %}
+                        <tr>
+                            <th scope="row">{{ item.id }}</th>
+                            <td>{{ item.booked_by }}</td>
+                            <td>{{ item.booked_by.username }}</td>
+                            <td>{{ item.date }}</td>
+                            <td>{{ item.number_of_days }} Days</td>
+                            <td>{{ item.get_type_of_hotel_display }}</td>
+                            <td>{{ item.get_food_items_display }}</td>
+                            <td>
+                                <div class="btn-group-sm">
+                                    <a href="#">
+                                        <button class="btn btn-danger">Reject</button>
+                                    </a>
+                                    <a href="#">
+                                        <button class="btn btn-success">Approve</button>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p class="alert alert-info m-1"> No Data</p>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

@@ -142,7 +142,6 @@ class CollegeTourForm(forms.ModelForm):
             'number_of_room',
             'type_of_hotel',
             'food_items',
-            'number_of_person',
             'transportation',
             'need_tour_guid',
         }
