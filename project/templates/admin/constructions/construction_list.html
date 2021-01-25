@@ -32,10 +32,10 @@
                             <td>{{ item.construction_plan }}</td>
                             <td>
                                 <div class="btn-group-sm">
-                                    <a href="#">
+                                    <a href="{% url 'reject-constructions' item.id %}">
                                         <button class="btn btn-danger">Reject</button>
                                     </a>
-                                    <a href="#">
+                                    <a href="{% url 'accept-constructions' item.id %}">
                                         <button class="btn btn-success">Approve</button>
                                     </a>
                                 </div>

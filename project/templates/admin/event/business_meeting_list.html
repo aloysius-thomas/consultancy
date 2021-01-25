@@ -34,10 +34,10 @@
                             <td>{{ item.light_and_sound }}</td>
                             <td>
                                 <div class="btn-group-sm">
-                                    <a href="#">
+                                    <a href="{% url 'reject-event' item.id %}">
                                         <button class="btn btn-danger">Reject</button>
                                     </a>
-                                    <a href="#">
+                                    <a href="{% url 'accept-event' item.id %}">
                                         <button class="btn btn-success">Approve</button>
                                     </a>
                                 </div>

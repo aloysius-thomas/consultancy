@@ -43,10 +43,10 @@
                             <td>{{ item.number_of_staff }}</td>
                             <td>
                                 <div class="btn-group-sm">
-                                    <a href="#">
+                                    <a href="{% url 'reject-tour' item.id %}">
                                         <button class="btn btn-danger">Reject</button>
                                     </a>
-                                    <a href="#">
+                                    <a href="{% url 'accept-tour' item.id %}">
                                         <button class="btn btn-success">Approve</button>
                                     </a>
                                 </div>
