@@ -148,68 +148,104 @@
                                     <a class="nav-link" href="{% url 'tour-honeymoon-list' %}">Honeymoon</a>
                                 </li>
                             {% else %}
-                                <li class="nav-divider">
-                                    Human Resource
+                                <li class="nav-item ">
+                                    <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false"
+                                       data-target="#submenu-hr" aria-controls="submenu-1">
+                                        <b>Human Resource</b>
+                                        <span class="badge badge-success">6</span></a>
+                                    <div id="submenu-hr" class="collapse submenu" style="">
+                                        <ul class="nav flex-column">
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{% url 'human-resource-candidate-list' %}">Candidates</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{% url 'human-resource-vacancy-list' %}">Vacancy
+                                                    Listing</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{% url 'human-resource-company-list' %}">Company</a>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{% url 'human-resource-candidate-list' %}">Candidates</a>
+                                <li class="nav-item ">
+                                    <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false"
+                                       data-target="#submenu-event" aria-controls="submenu-1">
+                                        <b>Event Management</b>
+                                        <span class="badge badge-success">6</span></a>
+                                    <div id="submenu-event" class="collapse submenu" style="">
+                                        <ul class="nav flex-column">
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{% url 'event-product-launch-list' %}">Product
+                                                    Launch</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{% url 'event-business-meeting-list' %}">Business
+                                                    Meetings</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{% url 'event-live-show-list' %}">Live
+                                                    Shows</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{% url 'event-wedding-list' %}">Wedding</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{% url 'event-birthday-list' %}">Birthday</a>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{% url 'human-resource-vacancy-list' %}">Vacancy
-                                        Listing</a>
+                                <li class="nav-item ">
+                                    <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false"
+                                       data-target="#submenu-construction" aria-controls="submenu-1">
+                                        <b>Construction</b>
+                                        <span class="badge badge-success">6</span></a>
+                                    <div id="submenu-construction" class="collapse submenu" style="">
+                                        <ul class="nav flex-column">
+                                            <li class="nav-item">
+                                                <a class="nav-link"
+                                                   href="{% url 'constructions-construction-list' %}">Construction</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{% url 'constructions-interior_2d-list' %}">Interior
+                                                    2D
+                                                    Drawing</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{% url 'constructions-interior_3d-list' %}">Interior
+                                                    3D
+                                                    Drawing</a>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{% url 'human-resource-company-list' %}">Company</a>
+                                <li class="nav-item ">
+                                    <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false"
+                                       data-target="#submenu-tour" aria-controls="submenu-1">
+                                        <b>Tour & Travels</b>
+                                        <span class="badge badge-success">6</span></a>
+                                    <div id="submenu-tour" class="collapse submenu" style="">
+                                        <ul class="nav flex-column">
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{% url 'tour-solo-list' %}">Solo Tour</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{% url 'tour-family-list' %}">Family Tour</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{% url 'tour-college-list' %}">College
+                                                    Tour</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{% url 'tour-honeymoon-list' %}">Honeymoon</a>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </li>
-                                <li class="nav-divider">
-                                    Event Management
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{% url 'event-product-launch-list' %}">Product Launch</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{% url 'event-business-meeting-list' %}">Business
-                                        Meetings</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{% url 'event-live-show-list' %}">Live Shows</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{% url 'event-wedding-list' %}">Wedding</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{% url 'event-birthday-list' %}">Birthday</a>
-                                </li>
-                                <li class="nav-divider">
-                                    Construction
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link"
-                                       href="{% url 'constructions-construction-list' %}">Construction</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{% url 'constructions-interior_2d-list' %}">Interior 2D
-                                        Drawing</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{% url 'constructions-interior_3d-list' %}">Interior 3D
-                                        Drawing</a>
-                                </li>
-                                <li class="nav-divider">
-                                    Tour & Travels
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{% url 'tour-solo-list' %}">Solo Tour</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{% url 'tour-family-list' %}">Family Tour</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{% url 'tour-college-list' %}">College Tour</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{% url 'tour-honeymoon-list' %}">Honeymoon</a>
-                                </li>
+
+
+
                             {% endif %}
 
                         {% endif %}
