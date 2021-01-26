@@ -3,8 +3,9 @@
     {{ title }}
 {% endblock %}
 {% block content %}
+    <h3>{{ title }}</h3>
     <div class="card">
-        <h5 class="card-header">{{ title }}</h5>
+        <h5 class="card-header" style="color: blue">Pending</h5>
         <div class="card-body">
             {% if data %}
                 <table class="table table-hover">
@@ -43,6 +44,82 @@
                                     </a>
                                 </div>
                             </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p class="alert alert-info m-1"> No Data</p>
+            {% endif %}
+        </div>
+    </div>
+    <div class="card">
+        <h5 class="card-header" style="color: green">Approved</h5>
+        <div class="card-body">
+            {% if approved %}
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Booked By</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Type of Venue</th>
+                        <th scope="col">Participant</th>
+                        <th scope="col">Food</th>
+                        <th scope="col">Light and Sound</th>
+                        <th scope="col">Amount</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for item in data %}
+                        <tr>
+                            <th scope="row">{{ item.id }}</th>
+                            <td>{{ item.booked_by }}</td>
+                            <td>{{ item.booked_by.username }}</td>
+                            <td>{{ item.date_of_event }}</td>
+                            <td>{{ item.get_type_of_venue_display }}</td>
+                            <td>{{ item.number_of_person }}</td>
+                            <td>{{ item.get_food_items_display }}</td>
+                            <td>{{ item.light_and_sound }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p class="alert alert-info m-1"> No Data</p>
+            {% endif %}
+        </div>
+    </div>
+    <div class="card">
+        <h5 class="card-header" style="color: red">Rejected</h5>
+        <div class="card-body">
+            {% if rejected %}
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Booked By</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Type of Venue</th>
+                        <th scope="col">Participant</th>
+                        <th scope="col">Food</th>
+                        <th scope="col">Light and Sound</th>
+                        <th scope="col">Amount</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for item in data %}
+                        <tr>
+                            <th scope="row">{{ item.id }}</th>
+                            <td>{{ item.booked_by }}</td>
+                            <td>{{ item.booked_by.username }}</td>
+                            <td>{{ item.date_of_event }}</td>
+                            <td>{{ item.get_type_of_venue_display }}</td>
+                            <td>{{ item.number_of_person }}</td>
+                            <td>{{ item.get_food_items_display }}</td>
+                            <td>{{ item.light_and_sound }}</td>
                         </tr>
                     {% endfor %}
                     </tbody>

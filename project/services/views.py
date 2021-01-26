@@ -402,52 +402,77 @@ def company_list_view(request):
 
 @admin_required()
 def product_launch_list(request):
-    data = Event.objects.filter(event_type='product_launch')
-    status = request.GET.get('status', None)
-    if status:
-        data = data.filter(status=status)
+    data = Event.objects.filter(event_type='product_launch', status='pending')
+    approved = Event.objects.filter(event_type='product_launch', status='approved')
+    rejected = Event.objects.filter(event_type='product_launch', status='rejected')
     title = 'Product Launch List'
-    return render(request, 'admin/event/product_launch_list.html', {'data': data, 'title': title})
+    context = {
+        'data': data,
+        'approved': approved,
+        'rejected': rejected,
+        'title': title
+    }
+    return render(request, 'admin/event/product_launch_list.html', context)
 
 
 @admin_required()
 def business_meeting_list(request):
-    data = Event.objects.filter(event_type='business_meeting')
-    status = request.GET.get('status', None)
-    if status:
-        data = data.filter(status=status)
+    data = Event.objects.filter(event_type='business_meeting', status='pending')
+    approved = Event.objects.filter(event_type='business_meeting', status='approved')
+    rejected = Event.objects.filter(event_type='business_meeting', status='rejected')
     title = 'Business Meeting List'
-    return render(request, 'admin/event/business_meeting_list.html', {'data': data, 'title': title})
+    context = {
+        'data': data,
+        'approved': approved,
+        'rejected': rejected,
+        'title': title
+    }
+    return render(request, 'admin/event/business_meeting_list.html', context)
 
 
 @admin_required()
 def live_show_list(request):
-    data = Event.objects.filter(event_type='live_show')
-    status = request.GET.get('status', None)
-    if status:
-        data = data.filter(status=status)
+    data = Event.objects.filter(event_type='live_show', status='pending')
+    approved = Event.objects.filter(event_type='live_show', status='approved')
+    rejected = Event.objects.filter(event_type='live_show', status='rejected')
     title = 'Live Show List'
-    return render(request, 'admin/event/live_show_list.html', {'data': data, 'title': title})
+    context = {
+        'data': data,
+        'approved': approved,
+        'rejected': rejected,
+        'title': title
+    }
+    return render(request, 'admin/event/live_show_list.html', context)
 
 
 @admin_required()
 def wedding_list(request):
-    data = Event.objects.filter(event_type='wedding')
-    status = request.GET.get('status', None)
-    if status:
-        data = data.filter(status=status)
+    data = Event.objects.filter(event_type='wedding', status='pending')
+    approved = Event.objects.filter(event_type='wedding', status='approved')
+    rejected = Event.objects.filter(event_type='wedding', status='rejected')
     title = 'Wedding List'
-    return render(request, 'admin/event/wedding_list.html', {'data': data, 'title': title})
+    context = {
+        'data': data,
+        'approved': approved,
+        'rejected': rejected,
+        'title': title
+    }
+    return render(request, 'admin/event/wedding_list.html', context)
 
 
 @admin_required()
 def birthday_list(request):
-    data = Event.objects.filter(event_type='birthday')
-    status = request.GET.get('status', None)
-    if status:
-        data = data.filter(status=status)
+    data = Event.objects.filter(event_type='birthday', status='approved')
+    approved = Event.objects.filter(event_type='birthday', status='approved')
+    rejected = Event.objects.filter(event_type='birthday', status='rejected')
     title = 'Birthday  List'
-    return render(request, 'admin/event/birthday_list.html', {'data': data, 'title': title})
+    context = {
+        'data': data,
+        'approved': approved,
+        'rejected': rejected,
+        'title': title
+    }
+    return render(request, 'admin/event/birthday_list.html', context)
 
 
 def get_event_redirect_url(event):
