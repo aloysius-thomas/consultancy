@@ -9,6 +9,7 @@ from django.shortcuts import redirect
 from django.shortcuts import render
 
 from accounts.models import User
+from project.email import send_email
 from services.forms import AdminCreateForm
 from services.forms import AdminLoginForm
 from services.forms import BirthdayBookingForm
@@ -500,6 +501,11 @@ def accept_event(request, event_id):
     else:
         event.status = 'approved'
         event.save()
+        send_email(
+            subject=f"Tour Approved",
+            message=f'Hi {event.booked_by} \n your {event.get_event_type_display()} is approved',
+            recipient_list=[event.booked_by.username, ]
+        )
         messages.success(request, f'{event.get_event_type_display()} Approved')
         return redirect(get_event_redirect_url(event))
 
@@ -513,6 +519,11 @@ def reject_event(request, event_id):
     else:
         event.status = 'rejected'
         event.save()
+        send_email(
+            subject=f"Tour Rejected",
+            message=f'Hi {event.booked_by} \n your {event.get_event_type_display()} is rejected',
+            recipient_list=[event.booked_by.username, ]
+        )
         messages.error(request, f'{event.get_event_type_display()} Rejected')
         return redirect(get_event_redirect_url(event))
 
@@ -583,6 +594,11 @@ def accept_construction(request, construction_id):
     else:
         construction.status = 'approved'
         construction.save()
+        send_email(
+            subject=f"Construction Service Approved",
+            message=f'Hi {construction.booked_by} \n your {construction.get_service_type_display()} is approved',
+            recipient_list=[construction.booked_by.username, ]
+        )
         messages.success(request, f'{construction.get_service_type_display()} Approved')
         return get_construction_redirect_url(construction)
 
@@ -596,6 +612,11 @@ def reject_construction(request, construction_id):
     else:
         construction.status = 'rejected'
         construction.save()
+        send_email(
+            subject=f"Construction Service Rejected",
+            message=f'Hi {construction.booked_by} \n your {construction.get_service_type_display()} is rejected',
+            recipient_list=[construction.booked_by.username, ]
+        )
         messages.error(request, f'{construction.get_service_type_display()} Rejected')
         return get_construction_redirect_url(construction)
 
@@ -683,6 +704,11 @@ def accept_tour(request, tour_id):
     else:
         tour.status = 'approved'
         tour.save()
+        send_email(
+            subject=f"Tour Approved",
+            message=f'Hi {tour.booked_by} \n your {tour.get_tour_type_display()} is approved',
+            recipient_list=[tour.booked_by.username, ]
+        )
         messages.success(request, f'{tour.get_tour_type_display()} Approved')
         return get_tour_redirect_url(tour)
 
@@ -696,6 +722,11 @@ def reject_tour(request, tour_id):
     else:
         tour.status = 'rejected'
         tour.save()
+        send_email(
+            subject=f"Tour Rejected",
+            message=f'Hi {tour.booked_by} \n your {tour.get_tour_type_display()} is rejected',
+            recipient_list=[tour.booked_by.username, ]
+        )
         messages.error(request, f'{tour.get_tour_type_display()} Rejected')
         return get_tour_redirect_url(tour)
 
