@@ -72,7 +72,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    {% for item in data %}
+                    {% for item in approved %}
                         <tr>
                             <th scope="row">{{ item.id }}</th>
                             <td>{{ item.booked_by }}</td>
@@ -110,7 +110,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    {% for item in data %}
+                    {% for item in rejected %}
                         <tr>
                             <th scope="row">{{ item.id }}</th>
                             <td>{{ item.booked_by }}</td>

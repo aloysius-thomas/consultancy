@@ -84,7 +84,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    {% for item in data %}
+                    {% for item in approved %}
                         <tr>
                             <th scope="row">{{ item.id }}</th>
                             <td>{{ item.booked_by }}</td>
@@ -110,7 +110,7 @@
     <div class="card">
         <h5 class="card-header" style="color: red">Rejected</h5>
         <div class="card-body">
-            {% if data %}
+            {% if rejected %}
                 <table class="table table-hover">
                     <thead>
                     <tr>
@@ -130,7 +130,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    {% for item in data %}
+                    {% for item in rejected %}
                         <tr>
                             <th scope="row">{{ item.id }}</th>
                             <td>{{ item.booked_by }}</td>
