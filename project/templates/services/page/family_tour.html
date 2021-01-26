@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block contents %}
+    <div class="hero-area2  slider-height2 hero-overly2 d-flex align-items-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="hero-cap text-center pt-50">
+                        <h2>Tour & Travels</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Hero End -->
+    <div class="container">
+        <div class="align-items-center m-5">
+            <div class="row">
+                <div class="col-12">
+                    <img class="card-img rounded-0" src="{% static 'assets/img/custom/tour.jpg' %}"
+                         alt="">
+                </div>
+                <div class="col-12" style="text-align: justify; text-justify: inter-word;">
+                    <h3 class="pt-4 pb-2">Family Travelling Packages</h3>
+                    <p class="pb-2">“The farther you travel, the closer you are to yourself” Who not loves to travel?!
+                        Of course, we all love it but what we settle down with is to not go with our love that is to
+                        travel. But what is that backing off your love? Is that where to go or best travel packages or
+                        expenses or any other excuses. Here’s your area for the perfect tour packages from Excellence
+                        Group! Have a look at our exciting packages.
+                    </p>
+                    <p class="pb-2">Family Packages Want to spend some quality time with your family. We are here for
+                        you: Shimla Tour - 3 Nights, 4 Days - INR: 5999/person Jaipur Tour - 3 Nights, 4 Days - INR:
+                        7999/person Darjeeling - Gangtok Tour - 4 Nights, 5 Days - INR: 9499/person
+                    </p>
+                </div>
+                <div class="m-4">
+                    <a href="{% url  'family-tour-booking' %}">
+                        <button class="btn btn--radius-2 btn--red" type="submit"> Pick Your Order</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block contents %}
+    <div class="hero-area2  slider-height2 hero-overly2 d-flex align-items-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="hero-cap text-center pt-50">
+                        <h2>Tour & Travels</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Hero End -->
+    <div class="container">
+        <div class="align-items-center m-5">
+            <div class="row">
+                <div class="col-12">
+                    <img class="card-img rounded-0" src="{% static 'assets/img/custom/tour.jpg' %}"
+                         alt="">
+                </div>
+                <div class="col-12" style="text-align: justify; text-justify: inter-word;">
+                    <h3 class="pt-4 pb-2">College Tour Package</h3>
+                    <p class="pb-2">Planning for a memorable farewell? We have a bunch of tour packages to make your
+                        college life memorable: Agra - Jaipur - Delhi - 4 Nights, 5 Days - INR: 9000/person Kashmir
+                        students tour packages - 4 Nights, 5 Days - INR: 8000/person Delhi - Shimla - Manali -
+                        Chandigarh - 7 Nights, 8 Days - INR: 9000/person The above packages are included with great
+                        facilities and the price for solo, family, college travelings are negotiable depending on the
+                        count of members.
+                    </p>
+                </div>
+                <div class="m-4">
+                    <a href="{% url  'college-tour-booking' %}">
+                        <button class="btn btn--radius-2 btn--red" type="submit"> Pick Your Order</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
