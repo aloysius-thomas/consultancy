@@ -519,32 +519,47 @@ def reject_event(request, event_id):
 
 @admin_required()
 def construction_list(request):
-    data = Construction.objects.filter(service_type='construction')
-    status = request.GET.get('status', None)
-    if status:
-        data = data.filter(status=status)
+    data = Construction.objects.filter(service_type='construction', status='pending')
+    approved = Construction.objects.filter(service_type='construction', status='approved')
+    rejected = Construction.objects.filter(service_type='construction', status='rejected')
     title = 'Construction  List'
-    return render(request, 'admin/constructions/construction_list.html', {'data': data, 'title': title})
+    context = {
+        'data': data,
+        'approved': approved,
+        'rejected': rejected,
+        'title': title
+    }
+    return render(request, 'admin/constructions/construction_list.html', context)
 
 
 @admin_required()
 def interior_2d_list(request):
-    data = Construction.objects.filter(service_type='interior_2d')
-    status = request.GET.get('status', None)
-    if status:
-        data = data.filter(status=status)
+    data = Construction.objects.filter(service_type='interior_2d', status='pending')
+    approved = Construction.objects.filter(service_type='interior_2d', status='approved')
+    rejected = Construction.objects.filter(service_type='interior_2d', status='rejected')
     title = 'Interior 2D-Drawing  List'
-    return render(request, 'admin/constructions/construction_list.html', {'data': data, 'title': title})
+    context = {
+        'data': data,
+        'approved': approved,
+        'rejected': rejected,
+        'title': title
+    }
+    return render(request, 'admin/constructions/construction_list.html', context)
 
 
 @admin_required()
 def interior_3d_list(request):
-    data = Construction.objects.filter(service_type='interior_3d')
-    status = request.GET.get('status', None)
-    if status:
-        data = data.filter(status=status)
+    data = Construction.objects.filter(service_type='interior_3d', status='pending')
+    approved = Construction.objects.filter(service_type='interior_3d', status='approved')
+    rejected = Construction.objects.filter(service_type='interior_3d', status='rejected')
     title = 'Interior 3D-Drawing  List'
-    return render(request, 'admin/constructions/construction_list.html', {'data': data, 'title': title})
+    context = {
+        'data': data,
+        'approved': approved,
+        'rejected': rejected,
+        'title': title
+    }
+    return render(request, 'admin/constructions/construction_list.html', context)
 
 
 def get_construction_redirect_url(construction):
@@ -587,42 +602,62 @@ def reject_construction(request, construction_id):
 
 @admin_required()
 def solo_tour_list(request):
-    data = Tour.objects.filter(tour_type='solo')
-    status = request.GET.get('status', None)
-    if status:
-        data = data.filter(status=status)
+    data = Tour.objects.filter(tour_type='solo', status='pending')
+    approved = Tour.objects.filter(tour_type='solo', status='approved')
+    rejected = Tour.objects.filter(tour_type='solo', status='rejected')
     title = 'Solo Tour List'
-    return render(request, 'admin/tour/solo_tour_list.html', {'data': data, 'title': title})
+    context = {
+        'data': data,
+        'approved': approved,
+        'rejected': rejected,
+        'title': title
+    }
+    return render(request, 'admin/tour/solo_tour_list.html', context)
 
 
 @admin_required()
 def family_tour_list(request):
-    data = Tour.objects.filter(tour_type='family')
-    status = request.GET.get('status', None)
-    if status:
-        data = data.filter(status=status)
+    data = Tour.objects.filter(tour_type='family', status='pending')
+    approved = Tour.objects.filter(tour_type='family', status='approved')
+    rejected = Tour.objects.filter(tour_type='family', status='rejected')
     title = 'Family Tour List'
-    return render(request, 'admin/tour/family_tour_list.html', {'data': data, 'title': title})
+    context = {
+        'data': data,
+        'approved': approved,
+        'rejected': rejected,
+        'title': title
+    }
+    return render(request, 'admin/tour/family_tour_list.html', context)
 
 
 @admin_required()
 def college_tour_list(request):
-    data = Tour.objects.filter(tour_type='college')
-    status = request.GET.get('status', None)
-    if status:
-        data = data.filter(status=status)
+    data = Tour.objects.filter(tour_type='college', status='pending')
+    approved = Tour.objects.filter(tour_type='college', status='approved')
+    rejected = Tour.objects.filter(tour_type='college', status='rejected')
     title = 'College Tour List'
-    return render(request, 'admin/tour/college_tour_list.html', {'data': data, 'title': title})
+    context = {
+        'data': data,
+        'approved': approved,
+        'rejected': rejected,
+        'title': title
+    }
+    return render(request, 'admin/tour/college_tour_list.html', context)
 
 
 @admin_required()
 def honeymoon_list(request):
-    data = Tour.objects.filter(tour_type='honeymoon')
-    status = request.GET.get('status', None)
-    if status:
-        data = data.filter(status=status)
-    title = 'Honeymoon List '
-    return render(request, 'admin/tour/honeymoon_list.html', {'data': data, 'title': title})
+    data = Tour.objects.filter(tour_type='honeymoon', status='pending')
+    approved = Tour.objects.filter(tour_type='honeymoon', status='approved')
+    rejected = Tour.objects.filter(tour_type='honeymoon', status='rejected')
+    title = 'Honeymoon List'
+    context = {
+        'data': data,
+        'approved': approved,
+        'rejected': rejected,
+        'title': title
+    }
+    return render(request, 'admin/tour/honeymoon_list.html', context)
 
 
 def get_tour_redirect_url(tour):
