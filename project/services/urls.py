@@ -35,7 +35,6 @@ from .views import wedding_page_view
 urlpatterns = [
 
     path('event/', event_management_page_view, name='event-management'),
-    path('event/', event_management_page_view, name='event-management'),
     path('event/product-launch/', product_launch_page_view, name='event-management-product-launch'),
     path('event/business-meeting/', business_meeting_page_view, name='event-management-business-meeting'),
     path('event/live-show/', live_show_page_view, name='event-management-live-show'),
@@ -72,5 +71,4 @@ urlpatterns = [
 
     path('company/', company_view, name='company-page'),
     path('company/<int:company_id>/details', company_details_view, name='company-detail-page'),
-
 ]

@@ -238,7 +238,7 @@ def book_birthday_view(request):
 def construction_service_view(request, service):
     title = f'{service.title()} Booking'
     if request.method == 'POST':
-        form = ConstructionForm(request.POST)
+        form = ConstructionForm(request.POST, request.FILES)
         if form.is_valid():
             event = form.save(commit=False)
             event.booked_by = request.user
@@ -280,7 +280,7 @@ def family_tour_view(request):
         if form.is_valid():
             tour = form.save(commit=False)
             tour.booked_by = request.user
-            tour.event_type = 'family'
+            tour.tour_type = 'family'
             tour.save()
             messages.success(request, 'Successfully Saved!')
             return redirect('home')
@@ -298,7 +298,7 @@ def college_tour_view(request):
         if form.is_valid():
             tour = form.save(commit=False)
             tour.booked_by = request.user
-            tour.event_type = 'college'
+            tour.tour_type = 'college'
             tour.number_of_person = tour.number_of_staff + tour.number_of_girls + tour.number_of_boys
             tour.save()
             messages.success(request, 'Successfully Saved!')
@@ -317,7 +317,7 @@ def honeymoon_view(request):
         if form.is_valid():
             tour = form.save(commit=False)
             tour.booked_by = request.user
-            tour.event_type = 'honeymoon'
+            tour.tour_type = 'honeymoon'
             tour.number_of_person = 2
             tour.save()
             messages.success(request, 'Successfully Saved!')
@@ -741,7 +741,7 @@ def admin_login_view(request):
             login(request, user)
             return redirect('admin-home')
     else:
-        form = CompanyForm()
+        form = AdminLoginForm()
     return render(request, 'admin/login.html', {'form': form})
 
 
