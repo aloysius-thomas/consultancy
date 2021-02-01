@@ -27,6 +27,18 @@
     <!-- Fengyuan Chen's Datepicker -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datepicker/0.6.5/datepicker.min.css"
           integrity="sha256-b88RdwbRJEzRx95nCuuva+hO5ExvXXnpX+78h8DjyOE=" crossorigin="anonymous"/>
+    <style>
+        #message {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+        }
+
+        #inner-message {
+            margin: 0 auto;
+        }
+    </style>
     {% block extra-css %}
 
     {% endblock %}
@@ -45,14 +57,20 @@
     </div>
 </div>
 {% include 'menu.html' %}
-<main>
-    {% if messages %}
-        {% for message in messages %}
-            {% if message.tags %}
-                <script>alert("{{ message }}")</script> {% endif %}
-        {% endfor %}
 
-    {% endif %}
+<main>
+    <div class="float-left">
+        {% for message in messages %}
+            <div style="position:fixed; top: 0px; left: 80%; width: 20%; z-index:9999; border-radius:0px">
+                <div class="alert {{ message.tags }} alert-dismissible " role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    {{ message }}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
     {% block contents %}
 
     {% endblock %}
