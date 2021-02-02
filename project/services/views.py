@@ -463,7 +463,7 @@ def wedding_list(request):
 
 @admin_required()
 def birthday_list(request):
-    data = Event.objects.filter(event_type='birthday', status='approved')
+    data = Event.objects.filter(event_type='birthday', status='pending')
     approved = Event.objects.filter(event_type='birthday', status='approved')
     rejected = Event.objects.filter(event_type='birthday', status='rejected')
     title = 'Birthday  List'
