@@ -262,12 +262,18 @@
     <!-- ============================================================== -->
     <div class="dashboard-wrapper">
         <div class="container-fluid dashboard-content">
-            {% if messages %}
+            <div class="float-left">
                 {% for message in messages %}
-                    {% if message.tags %}
-                        <script>alert("{{ message }}")</script> {% endif %}
+                    <div style="position:fixed; top: 0px; left: 80%; width: 20%; z-index:9999; border-radius:0px">
+                        <div class="alert {{ message.tags }} alert-dismissible " role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            {{ message }}
+                        </div>
+                    </div>
                 {% endfor %}
-            {% endif %}
+            </div>
             <div class="row">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                     {% block content %}
