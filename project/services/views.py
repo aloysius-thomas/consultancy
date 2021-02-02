@@ -361,11 +361,11 @@ def vacancy_submit_view(request):
     return render(request, 'services/forms/vacancy_submit_form.html', {'form': form, 'title': title})
 
 
-@admin_required
+@admin_required()
 def company_create_view(request):
-    title = 'Submit Company  '
+    title = 'Submit Company '
     if request.method == 'POST':
-        form = CompanyForm(request.POST)
+        form = CompanyForm(request.POST or None)
         if form.is_valid():
             form.save()
             return redirect('home')
